@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "id": "ejecutivos",
+      "title": "Ejecutivos",
+      "note": "Bandeja completa. Escoge la proteína y el resto va servido.",
+      "dual": false,
+      "extra": "arroz blanco · fideo o pimentón · granos zaragoza · papa francesa o patacón · ensalada verde · sopa del día · jugo de agua de panela",
+      "items": [
+        { "id": "cerdo-guisado", "name": "Cerdo Guisado", "price": 15000, "available": true },
+        { "id": "bagre-frito", "name": "Bagre Frito", "price": 15000, "available": true },
+        { "id": "carne-bistek", "name": "Carne Bistek", "price": 16000, "available": true },
+        { "id": "lomo-chimichurri", "name": "Lomo Chimichurri", "price": 15000, "available": true },
+        { "id": "pechuga-asada", "name": "Pechuga Asada", "price": 15000, "available": true },
+        { "id": "carne-asada", "name": "Carne Asada", "price": 16000, "available": true },
+        { "id": "pechuga-bistek", "name": "Pechuga Bistek", "price": 15000, "available": true },
+        { "id": "lengua-agridulce", "name": "Lengua Agridulce", "price": 16000, "available": false },
+        { "id": "lomo-bbq", "name": "Lomo BBQ", "price": 15000, "available": false }
+      ]
+    },
+    {
+      "id": "especiales",
+      "title": "Especiales",
+      "note": "Platos más grandes. El precio de al lado es en mesa.",
+      "dual": true,
+      "extra": "",
+      "items": [
+        { "id": "lomo-cerdo-bistek-papitas", "name": "Lomo de Cerdo Bistek + Papitas y Ensalada", "price": 16000, "price2": 17000, "available": true },
+        { "id": "carne-asada-papa", "name": "Carne Asada + Papa Francesa", "price": 17000, "price2": 18000, "available": true },
+        { "id": "pechuga-asada-papa", "name": "Pechuga Asada + Papa Francesa", "price": 16000, "price2": 17000, "available": true }
+      ]
+    },
+    {
+      "id": "vaqueritos",
+      "title": "Vaqueritos",
+      "note": "Porción más ligera, desde $14.000.",
+      "dual": false,
+      "extra": "",
+      "items": [
+        { "id": "vaq-carne-asada", "name": "Carne Asada o Encebollada", "price": 15000, "available": true },
+        { "id": "vaq-lomo-cerdo", "name": "Lomo de Cerdo", "price": 14000, "available": true },
+        { "id": "vaq-pechuga", "name": "Pechuga Asada o Chimichurri", "price": 14000, "available": true }
+      ]
+    }
+  ]
+}

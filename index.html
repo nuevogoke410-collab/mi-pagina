@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Esteban y Sara · Almuerzos caseros</title>
+  <meta name="description" content="Almuerzos caseros, hechos el mismo día. Menú del día, precios y pedidos por WhatsApp.">
+  <meta name="theme-color" content="#2a0a12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232a0a12'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23ffc21a'%3EE%26S%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="hero">
+    <button class="admin-btn" id="adminBtn" type="button">Admin</button>
+
+
+    <div class="title-wrap">
+      <h1 class="title" aria-label="Esteban y Sara">
+        <span class="line" data-split>ESTEBAN</span>
+        <span class="line" data-split>Y SARA</span>
+      </h1>
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <defs><path id="circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+          <text><textPath href="#circle">HECHO HOY · CASERO · CON AMOR · </textPath></text>
+        </svg>
+        <div class="bowl">
+          <span class="steam s1"></span><span class="steam s2"></span><span class="steam s3"></span>
+          <svg viewBox="0 0 48 30" class="bowl-svg"><path d="M2 6h44c0 13-9.8 22-22 22S2 19 2 6Z"/><rect x="0" y="2" width="48" height="4" rx="2"/></svg>
+        </div>
+      </div>
+    </div>
+    <p class="tagline reveal">Almuerzos caseros, hechos el mismo día.</p>
+
+    <div class="status reveal">
+      <span class="date" id="today">Hoy</span>
+      <span class="avail">
+        <span class="avail-bar"><span id="availFill"></span></span>
+        <span id="availText">Cargando menú…</span>
+      </span>
+    </div>
+  </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Sopa del día</span><i>✦</i><span>Jugo de panela</span><i>✦</i><span>Hecho el mismo día</span><i>✦</i><span>Para mesa o para llevar</span><i>✦</i><span>Paga con Nequi</span><i>✦</i>
+      <span>Sopa del día</span><i>✦</i><span>Jugo de panela</span><i>✦</i><span>Hecho el mismo día</span><i>✦</i><span>Para mesa o para llevar</span><i>✦</i><span>Paga con Nequi</span><i>✦</i>
+    </div>
+  </div>
+
+  <nav class="tabs" id="tabs" aria-label="Secciones del menú">
+    <div class="tabs-inner">
+      <span class="tab-pill" id="tabPill" aria-hidden="true"></span>
+    </div>
+  </nav>
+
+  <main id="menu" class="menu" aria-live="polite"></main>
+
+  <section class="order" id="pedir">
+    <h2 class="section-title reveal"><span>Para pedir</span></h2>
+    <p class="order-hint reveal">Toca <b>+</b> en los platos para armar tu pedido y te lo mandamos listo por WhatsApp.</p>
+    <div class="order-cards">
+      <a class="card wa reveal" href="https://wa.me/573046269648" target="_blank" rel="noopener">
+        <span class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>
+        </span>
+        <span class="card-label">Escríbenos por WhatsApp</span>
+        <span class="card-number">304 626 9648</span>
+        <span class="card-go">Abrir chat →</span>
+      </a>
+      <button class="card nequi reveal" type="button" data-copy="3007268066">
+        <span class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v1H3V7Zm0 3h18v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7Zm12 4a1 1 0 1 0 0 2h3a1 1 0 1 0 0-2h-3Z"/></svg>
+        </span>
+        <span class="card-label">Paga con Nequi</span>
+        <span class="card-number">300 726 8066</span>
+        <span class="card-go" data-copy-label>Tocar para copiar</span>
+      </button>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Esteban y Sara</span><span>·</span><span>Almuerzos caseros</span>
+  </footer>
+
+  <!-- Barra del pedido -->
+  <div class="cart-bar" id="cartBar" hidden>
+    <button type="button" class="cart-summary" id="cartOpen">
+      <span class="cart-count" id="cartCount">0</span>
+      <span class="lbl">Ver pedido</span>
+      <b id="cartTotal">$0</b>
+    </button>
+    <a class="cart-send" id="cartSendQuick" target="_blank" rel="noopener">Pedir<span class="long"> por WhatsApp</span> →</a>
+  </div>
+  <a class="wa-fab" id="waFab" href="https://wa.me/573046269648" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+
+  <!-- Hoja del pedido -->
+  <dialog class="sheet" id="cartSheet">
+    <form method="dialog" class="sheet-inner">
+      <div class="sheet-head">
+        <h3>Tu pedido</h3>
+        <button class="icon-btn" value="close" aria-label="Cerrar">✕</button>
+      </div>
+      <ul class="cart-list" id="cartList"></ul>
+      <label class="field">
+        <span>Nombre y dirección (o número de mesa)</span>
+        <textarea id="cartNote" rows="2" placeholder="Ej: Laura, Cra 10 #20-30"></textarea>
+      </label>
+      <div class="sheet-total"><span>Total</span><b id="sheetTotal">$0</b></div>
+      <div class="sheet-actions">
+        <button type="button" class="ghost" id="cartClear">Vaciar</button>
+        <a class="primary" id="cartSend" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Login admin -->
+  <dialog class="sheet" id="loginDlg">
+    <form class="sheet-inner" id="loginForm">
+      <div class="sheet-head">
+        <h3>Modo admin</h3>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">✕</button>
+      </div>
+      <label class="field">
+        <span>Clave</span>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </label>
+      <p class="form-msg" id="loginMsg"></p>
+      <div class="sheet-actions">
+        <button type="submit" class="primary">Entrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Panel admin -->
+  <dialog class="sheet admin" id="adminDlg">
+    <form class="sheet-inner" id="adminForm">
+      <div class="sheet-head">
+        <h3>Menú de hoy</h3>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar">✕</button>
+      </div>
+      <div id="adminBody"></div>
+      <p class="form-msg" id="adminMsg"></p>
+      <div class="sheet-actions sticky">
+        <button type="button" class="ghost" id="adminAllOn">Activar todo</button>
+        <button type="submit" class="primary">Guardar cambios</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
