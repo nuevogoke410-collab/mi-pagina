@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kits de Amor · Cuidado facial · El amor empieza contigo</title>
-  <meta name="description" content="Kits de Amor: rutina de cuidado facial en 4 pasos. Limpiador, tónico, suero y crema. Pide por WhatsApp con envíos a toda Colombia.">
+  <meta name="description" content="Kits de Amor: cuidado facial K-beauty. Limpiador, tónico, sérum, crema, protector solar y bálsamo. Pide por WhatsApp con envíos a toda Colombia.">
   <meta name="theme-color" content="#FBE9EC">
 
   <!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook) -->
   <meta property="og:title" content="Kits de Amor 💗 El amor empieza contigo">
-  <meta property="og:description" content="Tu rutina de cuidado facial en 4 pasos. Pide por WhatsApp, envíos a toda Colombia.">
+  <meta property="og:description" content="Tu rutina de cuidado facial de día y de noche. Pide por WhatsApp, envíos a toda Colombia.">
   <meta property="og:image" content="kit.jpg">
   <meta property="og:type" content="website">
 
@@ -68,6 +68,30 @@
     .brillo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%); transform: translateX(-120%); animation: brillo 4.5s ease-in-out 1.5s infinite; }
     @keyframes brillo { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
 
+
+    /* Ventanas (producto y carrito): hoja desde abajo en celular, centrada en computador */
+    dialog.hoja { width: 100%; max-width: 34rem; max-height: 90dvh; margin: auto auto 0; padding: 0; border: 0; border-radius: 2rem 2rem 0 0; background: #fff; color: inherit; overflow: hidden; }
+    dialog.hoja[open] { display: flex; flex-direction: column; animation: subir .45s cubic-bezier(.16,1,.3,1); }
+    dialog.hoja > * { min-height: 0; }
+    dialog.hoja::backdrop { background: rgba(74,59,63,.38); backdrop-filter: blur(4px); animation: aparecer .3s ease; }
+    @media (min-width: 640px) {
+      dialog.hoja { margin: auto; border-radius: 2rem; }
+      dialog.lateral { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; max-width: 28rem; border-radius: 2rem 0 0 2rem; }
+      dialog.lateral[open] { animation: deslizar .45s cubic-bezier(.16,1,.3,1); }
+    }
+    @keyframes subir { from { transform: translateY(40px); opacity: 0; } }
+    @keyframes deslizar { from { transform: translateX(60px); opacity: 0; } }
+    @keyframes aparecer { from { opacity: 0; } }
+    html:has(dialog[open]) { overflow: hidden; }
+
+    /* Contador del carrito */
+    @keyframes rebote { 40% { transform: scale(1.4); } }
+    .rebote { animation: rebote .45s cubic-bezier(.34,1.56,.64,1); }
+
+    /* Aviso "agregado al carrito" */
+    .aviso { position: fixed; z-index: 70; left: 50%; top: 5rem; width: max-content; max-width: calc(100vw - 2rem); opacity: 0; pointer-events: none; transform: translate(-50%, -200%); transition: transform .5s cubic-bezier(.34,1.56,.64,1), opacity .3s; }
+    .aviso.visible { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
       .js .reveal { opacity: 1; transform: none; }
@@ -88,15 +112,25 @@
   <!-- ============================================================
        ENCABEZADO
        ============================================================ -->
-  <header class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 bg-leche/85 backdrop-blur-md border-b border-rosa-claro/70">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
     <a href="#inicio" class="flex items-center gap-3 min-h-11" aria-label="Kits de Amor, ir al inicio">
       <img src="data:image/jpeg;base64,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" alt="" width="48" height="48" class="size-12 rounded-full ring-1 ring-rosa shadow-sm">
       <span class="font-serif text-2xl font-semibold leading-none">Kits de Amor</span>
     </a>
-    <a data-wa href="#" target="_blank" rel="noopener"
-       class="hidden sm:inline-flex items-center min-h-11 px-5 rounded-full border border-acento/60 text-profundo text-sm font-medium hover:bg-rosa-claro transition">
-      Hacer pedido
-    </a>
+    <div class="flex items-center gap-2">
+      <a data-wa href="#" target="_blank" rel="noopener"
+         class="hidden sm:inline-flex items-center min-h-11 px-5 rounded-full border border-acento/60 text-profundo text-sm font-medium hover:bg-rosa-claro transition">
+        Hacer pedido
+      </a>
+      <!-- Botón del carrito -->
+      <button type="button" id="abrirCarrito" aria-label="Abrir carrito"
+              class="relative size-12 rounded-full bg-blanco border border-rosa grid place-items-center text-profundo hover:bg-rosa-claro transition">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-bolsa"/></svg>
+        <span id="contadorCarrito" class="hidden absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-profundo text-blanco text-[11px] font-semibold leading-5 text-center">0</span>
+      </button>
+    </div>
+    </div>
   </header>
 
   <main>
@@ -116,7 +150,7 @@
         <!-- Texto -->
         <div class="text-center md:text-left">
           <p class="reveal inline-flex items-center gap-2 rounded-full bg-blanco/80 border border-rosa px-4 py-1.5 text-xs font-medium tracking-[.12em] uppercase text-profundo">
-            Rutina K-beauty · 4 pasos
+            Rutina K-beauty · Día y noche
           </p>
 
           <h1 class="reveal font-serif font-semibold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] mt-5 text-balance" style="--d:80ms">
@@ -124,7 +158,7 @@
           </h1>
 
           <p class="reveal mt-5 text-base sm:text-lg text-suave max-w-md mx-auto md:mx-0" style="--d:160ms">
-            Limpiador, tónico, suero y crema para una piel suave, luminosa y cuidada todos los días. Porque el amor empieza contigo. 💗
+            Limpiador, tónico, sérum, crema, protector solar y bálsamo para una piel suave, hidratada y luminosa. Porque el amor empieza contigo. 💗
           </p>
 
           <div class="reveal mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start" style="--d:240ms">
@@ -161,8 +195,8 @@
 
           <!-- Etiquetas flotantes -->
           <div class="flotar absolute -left-2 sm:-left-6 top-1/3 rounded-2xl bg-blanco/90 backdrop-blur px-4 py-3 shadow-lg text-left">
-            <p class="font-serif text-2xl font-semibold leading-none text-profundo">4</p>
-            <p class="text-xs text-suave mt-1">pasos de cuidado</p>
+            <p class="font-serif text-2xl font-semibold leading-none text-profundo">6</p>
+            <p class="text-xs text-suave mt-1">productos de cuidado</p>
           </div>
           <div class="flotar-2 absolute -right-2 sm:-right-6 bottom-10 rounded-2xl bg-blanco/90 backdrop-blur px-4 py-3 shadow-lg flex items-center gap-2">
             <svg class="size-5 text-acento" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-corazon"/></svg>
@@ -182,86 +216,17 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="text-center max-w-2xl mx-auto">
           <p class="reveal text-xs font-medium tracking-[.18em] uppercase text-profundo">Tu rutina</p>
-          <h2 class="reveal font-serif font-semibold text-4xl sm:text-5xl mt-3" style="--d:80ms">Cuatro pasos, <em class="font-medium text-profundo">una piel feliz</em></h2>
-          <p class="reveal mt-4 text-suave" style="--d:160ms">Una rutina sencilla para la mañana y la noche. Cada paso prepara tu piel para el siguiente.</p>
+          <h2 class="reveal font-serif font-semibold text-4xl sm:text-5xl mt-3" style="--d:80ms">Seis productos, <em class="font-medium text-profundo">una piel feliz</em></h2>
+          <p class="reveal mt-4 text-suave" style="--d:160ms">Toca un producto para ver sus ingredientes, cuándo usarlo y agregarlo a tu carrito.</p>
         </div>
 
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-
-          <!-- Paso 1: Limpiador -->
-          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:0ms">
-            <div class="flex items-center justify-between">
-              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
-                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-limpiador"/></svg>
-              </span>
-              <span class="font-serif text-3xl text-acento">01</span>
-            </div>
-            <h3 class="font-serif text-2xl font-semibold mt-5">Limpiador</h3>
-            <p class="text-sm text-suave mt-2 flex-1">Retira el maquillaje, la grasa y las impurezas del día sin resecar. Deja tu piel limpia y lista para el siguiente paso.</p>
-            <div class="mt-5 flex items-center justify-between gap-3">
-              <span class="font-serif text-2xl font-semibold">$85.000</span>
-              <a data-wa data-producto="el Limpiador" href="#" target="_blank" rel="noopener" aria-label="Pedir el Limpiador por WhatsApp"
-                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
-            </div>
-          </article>
-
-          <!-- Paso 2: Tónico -->
-          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:90ms">
-            <div class="flex items-center justify-between">
-              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
-                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-tonico"/></svg>
-              </span>
-              <span class="font-serif text-3xl text-acento">02</span>
-            </div>
-            <h3 class="font-serif text-2xl font-semibold mt-5">Tónico</h3>
-            <p class="text-sm text-suave mt-2 flex-1">Refresca y equilibra la piel después de limpiarla, y la prepara para recibir mejor el suero.</p>
-            <div class="mt-5 flex items-center justify-between gap-3">
-              <span class="font-serif text-2xl font-semibold">$85.000</span>
-              <a data-wa data-producto="el Tónico" href="#" target="_blank" rel="noopener" aria-label="Pedir el Tónico por WhatsApp"
-                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
-            </div>
-          </article>
-
-          <!-- Paso 3: Suero -->
-          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:180ms">
-            <div class="flex items-center justify-between">
-              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
-                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-suero"/></svg>
-              </span>
-              <span class="font-serif text-3xl text-acento">03</span>
-            </div>
-            <h3 class="font-serif text-2xl font-semibold mt-5">Suero</h3>
-            <p class="text-sm text-suave mt-2 flex-1">Unas gotas concentradas que aportan hidratación y luminosidad. Aplícalo con toquecitos suaves.</p>
-            <div class="mt-5 flex items-center justify-between gap-3">
-              <span class="font-serif text-2xl font-semibold">$90.000</span>
-              <a data-wa data-producto="el Suero" href="#" target="_blank" rel="noopener" aria-label="Pedir el Suero por WhatsApp"
-                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
-            </div>
-          </article>
-
-          <!-- Paso 4: Crema -->
-          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:270ms">
-            <div class="flex items-center justify-between">
-              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
-                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-crema"/></svg>
-              </span>
-              <span class="font-serif text-3xl text-acento">04</span>
-            </div>
-            <h3 class="font-serif text-2xl font-semibold mt-5">Crema</h3>
-            <p class="text-sm text-suave mt-2 flex-1">Sella la hidratación y deja tu piel suave y nutrida todo el día. El toque final de tu ritual.</p>
-            <div class="mt-5 flex items-center justify-between gap-3">
-              <span class="font-serif text-2xl font-semibold">$90.000</span>
-              <a data-wa data-producto="la Crema" href="#" target="_blank" rel="noopener" aria-label="Pedir la Crema por WhatsApp"
-                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
-            </div>
-          </article>
-
-        </div>
+        <!-- Las tarjetas se crean solas a partir de la lista PRODUCTOS (al final del archivo) -->
+        <div id="listaProductos" class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
 
         <p class="reveal text-center mt-10">
-          <a data-wa href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 min-h-11 text-profundo font-medium underline decoration-acento/60 underline-offset-4 hover:decoration-profundo">
-            ¿Quieres el kit completo? Pregúntanos por WhatsApp →
-          </a>
+          <button type="button" id="agregarTodo" class="inline-flex items-center gap-2 min-h-11 px-2 text-profundo font-medium underline decoration-acento/60 underline-offset-4 hover:decoration-profundo">
+            ¿Quieres la rutina completa? Agrégala al carrito →
+          </button>
         </p>
       </div>
     </section>
@@ -364,6 +329,92 @@
   </a>
 
   <!-- ============================================================
+       VENTANA DE PRODUCTO (se llena sola al tocar una tarjeta)
+       ============================================================ -->
+  <dialog id="ventanaProducto" class="hoja" aria-labelledby="vpNombre">
+    <div class="relative overflow-y-auto p-6 sm:p-8">
+      <button type="button" data-cerrar aria-label="Cerrar" class="absolute top-4 right-4 size-11 rounded-full bg-leche grid place-items-center text-suave hover:text-texto hover:bg-rosa-claro transition">✕</button>
+
+      <div class="flex items-center gap-4 pr-12">
+        <span id="vpIcono" class="size-16 shrink-0 rounded-2xl bg-rosa-claro grid place-items-center text-profundo"></span>
+        <div>
+          <p id="vpTipo" class="text-xs font-medium tracking-[.14em] uppercase text-profundo"></p>
+          <h3 id="vpNombre" class="font-serif text-3xl font-semibold leading-tight mt-1"></h3>
+        </div>
+      </div>
+
+      <p id="vpDescripcion" class="mt-5 text-suave leading-relaxed"></p>
+
+      <div id="vpIngredientesCaja" class="mt-5">
+        <p class="text-sm font-medium">Ingredientes clave</p>
+        <div id="vpIngredientes" class="mt-2 flex flex-wrap gap-2"></div>
+      </div>
+
+      <p id="vpUso" class="mt-5 inline-flex items-center gap-2 rounded-full bg-rosa-claro px-3.5 py-1.5 text-sm"></p>
+
+      <div class="mt-6 pt-5 border-t border-rosa-claro flex items-center justify-between gap-4">
+        <span id="vpPrecio" class="font-serif text-3xl font-semibold"></span>
+        <div class="flex items-center rounded-full border border-rosa bg-leche" role="group" aria-label="Cantidad">
+          <button type="button" id="vpMenos" aria-label="Quitar uno" class="size-11 grid place-items-center text-xl text-profundo">−</button>
+          <span id="vpCantidad" class="w-7 text-center font-semibold" aria-live="polite">1</span>
+          <button type="button" id="vpMas" aria-label="Agregar uno" class="size-11 grid place-items-center text-xl text-profundo">+</button>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-3">
+        <button type="button" id="vpAgregar"
+                class="min-h-13 px-2 rounded-full border-2 border-profundo text-profundo text-[13px] sm:text-base whitespace-nowrap font-medium hover:bg-rosa-claro transition">
+          Agregar al carrito
+        </button>
+        <a id="vpComprar" href="#" target="_blank" rel="noopener"
+           class="brillo min-h-13 px-2 rounded-full bg-profundo text-blanco text-[13px] sm:text-base whitespace-nowrap font-medium inline-flex items-center justify-center gap-2 hover:bg-profundo-oscuro transition">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          Comprar ahora
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============================================================
+       CARRITO
+       ============================================================ -->
+  <dialog id="ventanaCarrito" class="hoja lateral" aria-labelledby="carritoTitulo">
+    <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-rosa-claro">
+      <h3 id="carritoTitulo" class="font-serif text-3xl font-semibold">Tu carrito</h3>
+      <button type="button" data-cerrar aria-label="Cerrar carrito" class="size-11 rounded-full bg-leche grid place-items-center text-suave hover:text-texto hover:bg-rosa-claro transition">✕</button>
+    </div>
+
+    <ul id="carritoLista" class="flex-1 overflow-y-auto px-6 py-4 space-y-3"></ul>
+
+    <div id="carritoVacio" class="hidden flex-1 px-6 py-12 text-center">
+      <svg class="size-12 mx-auto text-acento" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-bolsa"/></svg>
+      <p class="font-serif text-2xl mt-3">Tu carrito está vacío</p>
+      <p class="text-sm text-suave mt-1">Toca un producto para agregarlo.</p>
+      <a href="#productos" data-cerrar class="mt-6 inline-flex items-center min-h-11 px-6 rounded-full border border-acento/60 text-profundo font-medium hover:bg-rosa-claro transition">Ver productos</a>
+    </div>
+
+    <div id="carritoPie" class="px-6 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-rosa-claro bg-leche">
+      <div class="flex items-baseline justify-between">
+        <span class="font-medium">Total</span>
+        <span id="carritoTotal" class="font-serif text-3xl font-semibold">$0</span>
+      </div>
+      <p class="text-xs text-suave mt-1">El envío se coordina por WhatsApp.</p>
+      <a id="carritoEnviar" href="#" target="_blank" rel="noopener"
+         class="brillo mt-4 w-full inline-flex items-center justify-center gap-2.5 min-h-14 rounded-full bg-profundo text-blanco font-medium hover:bg-profundo-oscuro transition">
+        <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        Finalizar pedido por WhatsApp
+      </a>
+      <button type="button" id="carritoVaciar" class="mt-2 w-full min-h-11 text-sm text-suave underline underline-offset-4 hover:text-texto">Vaciar carrito</button>
+    </div>
+  </dialog>
+
+  <!-- Aviso "agregado al carrito" -->
+  <div id="aviso" class="aviso flex items-center gap-3 rounded-full bg-texto text-blanco pl-5 pr-2 py-2 shadow-xl text-sm" role="status" aria-live="polite">
+    <span id="avisoTexto" class="truncate">Agregado al carrito ✓</span>
+    <button type="button" id="avisoVer" class="shrink-0 whitespace-nowrap min-h-10 px-4 rounded-full bg-blanco/15 hover:bg-blanco/25 font-medium">Ver carrito</button>
+  </div>
+
+  <!-- ============================================================
        ÍCONOS (se usan con <use href="#i-nombre"/>)
        ============================================================ -->
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
@@ -380,6 +431,10 @@
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
     <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.6a3.6 3.6 0 1 1-3.6-3.6"/><path d="M14 3c.4 2.9 2.4 4.7 5.2 4.8"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 21v-7.5H17l.5-3.2h-3V8.6c0-.9.4-1.6 1.7-1.6h1.4V4.2a17 17 0 0 0-2.3-.2c-2.4 0-3.9 1.4-3.9 4v2.3H8.8v3.2h2.6V21"/></symbol>
+    <symbol id="i-bolsa" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></symbol>
+    <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-luna" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-balsamo" viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="8" ry="3"/><path d="M4 9v5c0 1.7 3.6 3 8 3s8-1.3 8-3V9"/><path d="M12 10.4s-1.4-.8-1.4-1.6a.8.8 0 0 1 1.4-.5.8.8 0 0 1 1.4.5c0 .8-1.4 1.6-1.4 1.6Z"/></symbol>
   </svg>
 
   <!-- ============================================================
@@ -390,31 +445,256 @@
     const CONFIG = {
       whatsapp: "573025368697",                      // 57 + número, sin espacios ni +
       mensaje: "Hola, quiero el Kit De Amor 💗",      // mensaje de los botones generales
-      mensajeProducto: "Hola, quiero {producto} de Kits De Amor 💗", // botones "Pedir" de cada producto
       ciudad: "tu ciudad",                           // ej: "Barranquilla"
       instagram: "https://www.instagram.com/kitsdeamor_/",
       tiktok: "",                                    // déjalo vacío para ocultar el ícono
       facebook: "",                                  // déjalo vacío para ocultar el ícono
     };
 
+    // ============================================================
+    // PRODUCTOS: edita aquí nombres, textos, ingredientes y precios.
+    // icono: limpiador | tonico | suero | crema | sol | balsamo
+    // uso: "Mañana y noche" | "Solo de noche" | "De día" | cualquier texto
+    // ============================================================
+    const PRODUCTOS = [
+      {
+        id: "cleanser",
+        nombre: "Gentle Foam Cleanser",
+        tipo: "Limpiador facial en espuma",
+        resumen: "Limpia sin resecar. Ideal para piel sensible o seca.",
+        descripcion: "Limpiador hidratante en espuma para pieles sensibles o secas. Elimina la suciedad, la grasa, el sudor y los restos de maquillaje sin resecar demasiado la piel.",
+        ingredientes: [],
+        uso: "Mañana y noche",
+        icono: "limpiador",
+        precio: 85000,
+      },
+      {
+        id: "toner",
+        nombre: "Rice & Cica Love Toner",
+        tipo: "Tónico facial",
+        resumen: "Hidrata, refresca y calma la piel.",
+        descripcion: "Se usa después de limpiar el rostro. Ayuda a hidratar, refrescar y calmar la piel.",
+        ingredientes: ["Agua de arroz", "Centella asiática"],
+        uso: "Mañana y noche",
+        icono: "tonico",
+        precio: 85000,
+      },
+      {
+        id: "serum",
+        nombre: "Hydra Glow Serum",
+        tipo: "Sérum facial",
+        resumen: "Hidratación concentrada para una piel suave y luminosa.",
+        descripcion: "Un producto más concentrado que aporta hidratación y ayuda a que la piel se vea más suave y luminosa.",
+        ingredientes: ["Ácido hialurónico", "Pantenol"],
+        uso: "Solo de noche",
+        icono: "suero",
+        precio: 90000,
+      },
+      {
+        id: "cream",
+        nombre: "Cloud Barrier Cream",
+        tipo: "Crema hidratante",
+        resumen: "Hidrata y protege la barrera natural de la piel.",
+        descripcion: "Mantiene la piel hidratada y ayuda a proteger su barrera natural.",
+        ingredientes: ["Ceramidas", "Ácido hialurónico", "Pantenol"],
+        uso: "Solo de noche",
+        icono: "crema",
+        precio: 90000,
+      },
+      {
+        id: "spf",
+        nombre: "Daily Shield SPF 50+",
+        tipo: "Protector solar",
+        resumen: "Protección diaria contra los rayos UV.",
+        descripcion: "Protege la piel de la radiación UV y ayuda a prevenir quemaduras y el daño causado por el sol.",
+        ingredientes: [],
+        uso: "De día",
+        icono: "sol",
+        precio: 90000,
+      },
+      {
+        id: "balm",
+        nombre: "Love Repair Balm",
+        tipo: "Bálsamo hidratante",
+        resumen: "Para labios, cutículas y zonas muy secas.",
+        descripcion: "Es más espeso que una crema y forma una capa protectora que ayuda a evitar la pérdida de humedad. Puedes usarlo en labios, cutículas y zonas muy secas.",
+        ingredientes: [],
+        uso: "Cuando lo necesites",
+        icono: "balsamo",
+        precio: 85000,
+      },
+    ];
+
     // --- No hace falta tocar nada de aquí para abajo ---
 
+    const $ = (sel) => document.querySelector(sel);
+    const dinero = (n) => "$" + n.toLocaleString("es-CO");
     const linkWhatsApp = (texto) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+    const buscar = (id) => PRODUCTOS.find((p) => p.id === id);
+    const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const icono = (nombre, clase) => `<svg class="${clase}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${nombre}"/></svg>`;
+    const iconoUso = (uso) => /noche/i.test(uso) && !/mañana/i.test(uso) ? "luna" : /día/i.test(uso) ? "sol" : "brillo";
 
-    document.querySelectorAll("[data-wa]").forEach((a) => {
-      const producto = a.dataset.producto;
-      a.href = linkWhatsApp(producto ? CONFIG.mensajeProducto.replace("{producto}", producto) : CONFIG.mensaje);
-    });
-
+    // Links generales de WhatsApp, redes, ciudad y año
+    document.querySelectorAll("[data-wa]").forEach((a) => (a.href = linkWhatsApp(CONFIG.mensaje)));
     document.querySelectorAll("[data-red]").forEach((a) => {
       const url = CONFIG[a.dataset.red];
       if (url) a.href = url; else a.remove();
     });
-
     document.querySelectorAll("[data-ciudad]").forEach((el) => (el.textContent = CONFIG.ciudad));
     document.querySelectorAll("[data-anio]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
-    // Aparición al hacer scroll
+    // ---------- Tarjetas de productos ----------
+    $("#listaProductos").innerHTML = PRODUCTOS.map((p, i) => `
+      <button type="button" data-abrir="${esc(p.id)}" style="--d:${(i % 3) * 90}ms"
+              class="reveal group text-left rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col cursor-pointer hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-profundo transition duration-500">
+        <span class="flex w-full items-center justify-between">
+          <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">${icono(p.icono, "size-7")}</span>
+          <span class="font-serif text-3xl text-acento">${String(i + 1).padStart(2, "0")}</span>
+        </span>
+        <span class="block text-xs font-medium tracking-[.12em] uppercase text-profundo mt-5">${esc(p.tipo)}</span>
+        <span class="block font-serif text-2xl font-semibold mt-1">${esc(p.nombre)}</span>
+        <span class="block text-sm text-suave mt-2 flex-1">${esc(p.resumen)}</span>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-blanco px-3 py-1 text-xs text-suave">${icono(iconoUso(p.uso), "size-3.5 text-acento")}${esc(p.uso)}</span>
+        <span class="mt-5 flex w-full items-center justify-between gap-3">
+          <span class="font-serif text-2xl font-semibold">${dinero(p.precio)}</span>
+          <span class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium group-hover:bg-profundo group-hover:text-blanco group-hover:border-profundo transition">Ver más</span>
+        </span>
+      </button>`).join("");
+
+    // ---------- Ventana de producto ----------
+    const ventana = $("#ventanaProducto");
+    let actual = null;
+    let cantidad = 1;
+
+    function actualizarComprar() {
+      $("#vpCantidad").textContent = cantidad;
+      $("#vpComprar").href = linkWhatsApp(
+        `Hola, quiero comprar ${cantidad} x ${actual.nombre} (${dinero(actual.precio * cantidad)}) de Kits De Amor 💗`
+      );
+    }
+
+    function abrirProducto(id) {
+      actual = buscar(id);
+      if (!actual) return;
+      cantidad = 1;
+      $("#vpIcono").innerHTML = icono(actual.icono, "size-8");
+      $("#vpTipo").textContent = actual.tipo;
+      $("#vpNombre").textContent = actual.nombre;
+      $("#vpDescripcion").textContent = actual.descripcion;
+      $("#vpIngredientesCaja").hidden = !actual.ingredientes.length;
+      $("#vpIngredientes").innerHTML = actual.ingredientes
+        .map((ing) => `<span class="rounded-full border border-rosa bg-leche px-3 py-1 text-sm">${esc(ing)}</span>`).join("");
+      $("#vpUso").innerHTML = `${icono(iconoUso(actual.uso), "size-4 text-profundo")}<span>Uso: <b class="font-medium">${esc(actual.uso)}</b></span>`;
+      $("#vpPrecio").textContent = dinero(actual.precio);
+      actualizarComprar();
+      ventana.showModal();
+    }
+
+    $("#listaProductos").addEventListener("click", (e) => {
+      const tarjeta = e.target.closest("[data-abrir]");
+      if (tarjeta) abrirProducto(tarjeta.dataset.abrir);
+    });
+    $("#vpMenos").addEventListener("click", () => { if (cantidad > 1) { cantidad--; actualizarComprar(); } });
+    $("#vpMas").addEventListener("click", () => { if (cantidad < 20) { cantidad++; actualizarComprar(); } });
+    $("#vpAgregar").addEventListener("click", () => {
+      agregar(actual.id, cantidad);
+      ventana.close();
+      avisar("Agregado al carrito ✓");
+    });
+
+    // ---------- Carrito (se recuerda en el navegador) ----------
+    const CLAVE = "kitsdeamor-carrito";
+    let carrito = {};
+    try { carrito = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch { carrito = {}; }
+    for (const id in carrito) if (!buscar(id) || !(carrito[id] > 0)) delete carrito[id];
+
+    function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(carrito)); } catch {} }
+
+    function agregar(id, n = 1) {
+      carrito[id] = Math.min(20, (carrito[id] || 0) + n);
+      guardar();
+      pintarCarrito(true);
+    }
+
+    function cambiar(id, n) {
+      carrito[id] = (carrito[id] || 0) + n;
+      if (carrito[id] <= 0) delete carrito[id];
+      guardar();
+      pintarCarrito();
+    }
+
+    function pintarCarrito(rebotar = false) {
+      const items = Object.entries(carrito).map(([id, n]) => ({ ...buscar(id), n }));
+      const unidades = items.reduce((s, it) => s + it.n, 0);
+      const total = items.reduce((s, it) => s + it.n * it.precio, 0);
+
+      const contador = $("#contadorCarrito");
+      contador.textContent = unidades;
+      contador.classList.toggle("hidden", !unidades);
+      if (rebotar) { contador.classList.remove("rebote"); void contador.offsetWidth; contador.classList.add("rebote"); }
+      $("#abrirCarrito").setAttribute("aria-label", `Abrir carrito (${unidades} productos)`);
+
+      $("#carritoLista").classList.toggle("hidden", !unidades);
+      $("#carritoPie").classList.toggle("hidden", !unidades);
+      $("#carritoVacio").classList.toggle("hidden", !!unidades);
+      $("#carritoTotal").textContent = dinero(total);
+
+      $("#carritoLista").innerHTML = items.map((it) => `
+        <li class="flex items-center gap-3 rounded-2xl bg-leche p-3">
+          <span class="size-12 shrink-0 rounded-xl bg-rosa-claro grid place-items-center text-profundo">${icono(it.icono, "size-6")}</span>
+          <span class="flex-1 min-w-0">
+            <span class="block font-medium text-sm leading-snug">${esc(it.nombre)}</span>
+            <span class="block text-sm text-suave">${dinero(it.precio * it.n)}</span>
+          </span>
+          <span class="flex items-center rounded-full border border-rosa bg-blanco">
+            <button type="button" data-cambiar="${esc(it.id)}" data-n="-1" aria-label="Quitar uno de ${esc(it.nombre)}" class="size-11 grid place-items-center text-lg text-profundo">−</button>
+            <span class="w-5 text-center text-sm font-semibold">${it.n}</span>
+            <button type="button" data-cambiar="${esc(it.id)}" data-n="1" aria-label="Agregar uno de ${esc(it.nombre)}" class="size-11 grid place-items-center text-lg text-profundo">+</button>
+          </span>
+        </li>`).join("");
+
+      const lineas = items.map((it) => `• ${it.n} x ${it.nombre} — ${dinero(it.precio * it.n)}`);
+      $("#carritoEnviar").href = linkWhatsApp(
+        `Hola, quiero hacer este pedido de Kits De Amor 💗\n\n${lineas.join("\n")}\n\nTotal: ${dinero(total)}`
+      );
+    }
+
+    $("#carritoLista").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-cambiar]");
+      if (b) cambiar(b.dataset.cambiar, Number(b.dataset.n));
+    });
+    $("#carritoVaciar").addEventListener("click", () => { carrito = {}; guardar(); pintarCarrito(); });
+    const abrirCarrito = () => { $("#aviso").classList.remove("visible"); $("#ventanaCarrito").showModal(); };
+    $("#abrirCarrito").addEventListener("click", abrirCarrito);
+    $("#agregarTodo").addEventListener("click", () => {
+      PRODUCTOS.forEach((p) => { if (!carrito[p.id]) carrito[p.id] = 1; });
+      guardar();
+      pintarCarrito(true);
+      abrirCarrito();
+    });
+
+    // ---------- Aviso ----------
+    let avisoTiempo;
+    function avisar(texto) {
+      $("#avisoTexto").textContent = texto;
+      $("#aviso").classList.add("visible");
+      clearTimeout(avisoTiempo);
+      avisoTiempo = setTimeout(() => $("#aviso").classList.remove("visible"), 3000);
+    }
+    $("#avisoVer").addEventListener("click", () => {
+      abrirCarrito();
+    });
+
+    // ---------- Cerrar ventanas (botón ✕, tocar afuera o tecla Esc) ----------
+    document.querySelectorAll("dialog").forEach((d) => {
+      d.addEventListener("click", (e) => { if (e.target === d) d.close(); });
+      d.querySelectorAll("[data-cerrar]").forEach((b) => b.addEventListener("click", () => d.close()));
+    });
+
+    pintarCarrito();
+
+    // ---------- Aparición al hacer scroll ----------
     const io = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
