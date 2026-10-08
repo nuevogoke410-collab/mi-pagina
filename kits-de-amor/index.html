@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kits de Amor · Cuidado facial · El amor empieza contigo</title>
+  <meta name="description" content="Kits de Amor: rutina de cuidado facial en 4 pasos. Limpiador, tónico, suero y crema. Pide por WhatsApp con envíos a toda Colombia.">
+  <meta name="theme-color" content="#FBE9EC">
+
+  <!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:title" content="Kits de Amor 💗 El amor empieza contigo">
+  <meta property="og:description" content="Tu rutina de cuidado facial en 4 pasos. Pide por WhatsApp, envíos a toda Colombia.">
+  <meta property="og:image" content="kit.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="logo.jpg">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS por CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Colores y fuentes de la marca (se usan como clases: bg-leche, text-texto, font-serif…) -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-blanco: #FFFFFF;
+      --color-leche: #FFF8F6;
+      --color-rosa-claro: #FBE9EC;
+      --color-rosa: #F4C9D1;
+      --color-acento: #D98A9B;      /* decorativo: íconos, bordes, detalles */
+      --color-profundo: #B4566E;    /* botones y textos de acento (buen contraste) */
+      --color-profundo-oscuro: #A84E66;
+      --color-texto: #4A3B3F;
+      --color-suave: #7A6468;       /* textos secundarios */
+      --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+
+  <!-- Animaciones y detalles que Tailwind no trae -->
+  <style>
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { -webkit-font-smoothing: antialiased; }
+
+    /* Aparición suave al hacer scroll (solo si hay JavaScript) */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); transition-delay: var(--d, 0ms); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    /* Flotación lenta de las etiquetas del hero */
+    @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .flotar { animation: flotar 5s ease-in-out infinite; }
+    .flotar-2 { animation: flotar 6s ease-in-out -2s infinite; }
+
+    /* Brillito girando */
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .girar { animation: girar 14s linear infinite; }
+
+    /* Pulso del botón flotante de WhatsApp */
+    @keyframes pulso { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.7); opacity: 0; } }
+    .pulso::before, .pulso::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: #25D366; z-index: -1; animation: pulso 2.4s ease-out infinite; }
+    .pulso::after { animation-delay: 1.2s; }
+
+    /* Brillo que cruza el botón principal */
+    .brillo { position: relative; overflow: hidden; isolation: isolate; }
+    .brillo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%); transform: translateX(-120%); animation: brillo 4.5s ease-in-out 1.5s infinite; }
+    @keyframes brillo { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body class="bg-leche text-texto font-sans overflow-x-hidden">
+
+  <!-- ============================================================
+       BARRA DE ANUNCIO
+       ============================================================ -->
+  <div class="bg-rosa-claro text-texto text-center text-xs sm:text-sm py-2 px-4 tracking-wide">
+    ✨ Envíos a toda Colombia · Pago contraentrega ✨
+  </div>
+
+  <!-- ============================================================
+       ENCABEZADO
+       ============================================================ -->
+  <header class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <a href="#inicio" class="flex items-center gap-3 min-h-11" aria-label="Kits de Amor, ir al inicio">
+      <img src="logo.jpg" alt="" width="48" height="48" class="size-12 rounded-full ring-1 ring-rosa shadow-sm">
+      <span class="font-serif text-2xl font-semibold leading-none">Kits de Amor</span>
+    </a>
+    <a data-wa href="#" target="_blank" rel="noopener"
+       class="hidden sm:inline-flex items-center min-h-11 px-5 rounded-full border border-acento/60 text-profundo text-sm font-medium hover:bg-rosa-claro transition">
+      Hacer pedido
+    </a>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         1. HERO
+         ============================================================ -->
+    <section id="inicio" class="relative">
+      <!-- Fondo con manchas suaves -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div class="absolute -top-24 -left-24 size-80 rounded-full bg-rosa/50 blur-3xl"></div>
+        <div class="absolute top-1/3 -right-32 size-96 rounded-full bg-rosa-claro blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-16 md:pt-12 md:pb-24 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+
+        <!-- Texto -->
+        <div class="text-center md:text-left">
+          <p class="reveal inline-flex items-center gap-2 rounded-full bg-blanco/80 border border-rosa px-4 py-1.5 text-xs font-medium tracking-[.12em] uppercase text-profundo">
+            Rutina K-beauty · 4 pasos
+          </p>
+
+          <h1 class="reveal font-serif font-semibold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] mt-5 text-balance" style="--d:80ms">
+            Tu piel merece <em class="text-profundo font-medium">un ritual de amor</em>
+          </h1>
+
+          <p class="reveal mt-5 text-base sm:text-lg text-suave max-w-md mx-auto md:mx-0" style="--d:160ms">
+            Limpiador, tónico, suero y crema para una piel suave, luminosa y cuidada todos los días. Porque el amor empieza contigo. 💗
+          </p>
+
+          <div class="reveal mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start" style="--d:240ms">
+            <a data-wa href="#" target="_blank" rel="noopener"
+               class="brillo inline-flex items-center justify-center gap-2.5 min-h-14 px-8 rounded-full bg-profundo text-blanco font-medium text-base shadow-[0_14px_34px_-12px_rgba(180,86,110,.7)] hover:bg-profundo-oscuro hover:-translate-y-0.5 transition">
+              <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Comprar por WhatsApp
+            </a>
+            <a href="#productos"
+               class="inline-flex items-center justify-center min-h-14 px-8 rounded-full border border-texto/15 bg-blanco/70 text-texto font-medium hover:bg-blanco transition">
+              Ver productos
+            </a>
+          </div>
+
+          <!-- Detalles de confianza -->
+          <ul class="reveal mt-7 flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start text-sm text-suave" style="--d:320ms">
+            <li class="flex items-center gap-2">
+              <svg class="size-5 text-acento" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-camion"/></svg>
+              Envíos a toda Colombia
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="size-5 text-acento" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-escudo"/></svg>
+              Pago contraentrega
+            </li>
+          </ul>
+        </div>
+
+        <!-- Foto principal (sin lazy: es lo primero que se ve) -->
+        <div class="reveal relative mx-auto w-full max-w-[17rem] sm:max-w-sm md:max-w-md mt-2 md:mt-0" style="--d:120ms">
+          <div class="absolute -inset-3 rounded-t-full rounded-b-[2.5rem] bg-linear-to-b from-rosa to-rosa-claro" aria-hidden="true"></div>
+          <img src="kit.jpg" alt="Kit de cuidado facial Kits de Amor: limpiador, tónico, suero, crema y borla en su caja rosada"
+               width="708" height="882" fetchpriority="high"
+               class="relative w-full aspect-[4/5] object-cover rounded-t-full rounded-b-[2rem] shadow-[0_30px_60px_-25px_rgba(74,59,63,.45)]">
+
+          <!-- Etiquetas flotantes -->
+          <div class="flotar absolute -left-2 sm:-left-6 top-1/3 rounded-2xl bg-blanco/90 backdrop-blur px-4 py-3 shadow-lg text-left">
+            <p class="font-serif text-2xl font-semibold leading-none text-profundo">4</p>
+            <p class="text-xs text-suave mt-1">pasos de cuidado</p>
+          </div>
+          <div class="flotar-2 absolute -right-2 sm:-right-6 bottom-10 rounded-2xl bg-blanco/90 backdrop-blur px-4 py-3 shadow-lg flex items-center gap-2">
+            <svg class="size-5 text-acento" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-corazon"/></svg>
+            <span class="text-xs font-medium">Hecho con amor</span>
+          </div>
+          <svg class="girar absolute -top-4 right-6 size-8 text-acento" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-brillo"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. PRODUCTOS / BENEFICIOS
+         Para cambiar un producto: edita el nombre, la descripción,
+         el precio y el atributo data-producto (va en el mensaje de WhatsApp).
+         ============================================================ -->
+    <section id="productos" class="bg-blanco py-16 md:py-24 scroll-mt-4">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="reveal text-xs font-medium tracking-[.18em] uppercase text-profundo">Tu rutina</p>
+          <h2 class="reveal font-serif font-semibold text-4xl sm:text-5xl mt-3" style="--d:80ms">Cuatro pasos, <em class="font-medium text-profundo">una piel feliz</em></h2>
+          <p class="reveal mt-4 text-suave" style="--d:160ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+        </div>
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <!-- Paso 1: Limpiador -->
+          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:0ms">
+            <div class="flex items-center justify-between">
+              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
+                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-limpiador"/></svg>
+              </span>
+              <span class="font-serif text-3xl text-acento">01</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Limpiador</h3>
+            <p class="text-sm text-suave mt-2 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="font-serif text-2xl font-semibold">$85.000</span>
+              <a data-wa data-producto="el Limpiador" href="#" target="_blank" rel="noopener" aria-label="Pedir el Limpiador por WhatsApp"
+                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
+            </div>
+          </article>
+
+          <!-- Paso 2: Tónico -->
+          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:90ms">
+            <div class="flex items-center justify-between">
+              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
+                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-tonico"/></svg>
+              </span>
+              <span class="font-serif text-3xl text-acento">02</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Tónico</h3>
+            <p class="text-sm text-suave mt-2 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="font-serif text-2xl font-semibold">$85.000</span>
+              <a data-wa data-producto="el Tónico" href="#" target="_blank" rel="noopener" aria-label="Pedir el Tónico por WhatsApp"
+                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
+            </div>
+          </article>
+
+          <!-- Paso 3: Suero -->
+          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:180ms">
+            <div class="flex items-center justify-between">
+              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
+                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-suero"/></svg>
+              </span>
+              <span class="font-serif text-3xl text-acento">03</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Suero</h3>
+            <p class="text-sm text-suave mt-2 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="font-serif text-2xl font-semibold">$90.000</span>
+              <a data-wa data-producto="el Suero" href="#" target="_blank" rel="noopener" aria-label="Pedir el Suero por WhatsApp"
+                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
+            </div>
+          </article>
+
+          <!-- Paso 4: Crema -->
+          <article class="reveal group rounded-[2rem] bg-leche border border-rosa-claro p-6 flex flex-col hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(180,86,110,.45)] transition duration-500" style="--d:270ms">
+            <div class="flex items-center justify-between">
+              <span class="size-14 rounded-2xl bg-rosa-claro grid place-items-center text-profundo group-hover:bg-rosa transition">
+                <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-crema"/></svg>
+              </span>
+              <span class="font-serif text-3xl text-acento">04</span>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Crema</h3>
+            <p class="text-sm text-suave mt-2 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="font-serif text-2xl font-semibold">$90.000</span>
+              <a data-wa data-producto="la Crema" href="#" target="_blank" rel="noopener" aria-label="Pedir la Crema por WhatsApp"
+                 class="inline-flex items-center min-h-11 px-4 rounded-full bg-blanco border border-acento/50 text-profundo text-sm font-medium hover:bg-profundo hover:text-blanco hover:border-profundo transition">Pedir</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="reveal text-center mt-10">
+          <a data-wa href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 min-h-11 text-profundo font-medium underline decoration-acento/60 underline-offset-4 hover:decoration-profundo">
+            ¿Quieres el kit completo? Pregúntanos por WhatsApp →
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. ENVÍOS Y ENTREGAS
+         ============================================================ -->
+    <section id="envios" class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="reveal text-xs font-medium tracking-[.18em] uppercase text-profundo">Envíos y entregas</p>
+          <h2 class="reveal font-serif font-semibold text-4xl sm:text-5xl mt-3" style="--d:80ms">Llegamos <em class="font-medium text-profundo">hasta tu puerta</em></h2>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+
+          <div class="reveal rounded-[2rem] bg-blanco p-7 text-center shadow-[0_18px_40px_-28px_rgba(74,59,63,.5)] hover:-translate-y-1 transition duration-500">
+            <span class="mx-auto size-16 rounded-full bg-rosa-claro grid place-items-center text-profundo">
+              <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-camion"/></svg>
+            </span>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Envíos nacionales</h3>
+            <p class="text-sm text-suave mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+          </div>
+
+          <div class="reveal rounded-[2rem] bg-blanco p-7 text-center shadow-[0_18px_40px_-28px_rgba(74,59,63,.5)] hover:-translate-y-1 transition duration-500" style="--d:100ms">
+            <span class="mx-auto size-16 rounded-full bg-rosa-claro grid place-items-center text-profundo">
+              <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ubicacion"/></svg>
+            </span>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Domicilios en <span data-ciudad>tu ciudad</span></h3>
+            <p class="text-sm text-suave mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.</p>
+          </div>
+
+          <div class="reveal rounded-[2rem] bg-blanco p-7 text-center shadow-[0_18px_40px_-28px_rgba(74,59,63,.5)] hover:-translate-y-1 transition duration-500" style="--d:200ms">
+            <span class="mx-auto size-16 rounded-full bg-rosa-claro grid place-items-center text-profundo">
+              <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-escudo"/></svg>
+            </span>
+            <h3 class="font-serif text-2xl font-semibold mt-5">Pago seguro</h3>
+            <p class="text-sm text-suave mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Paga contraentrega o por transferencia.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. CTA FINAL
+         ============================================================ -->
+    <section class="px-4 sm:px-6 pb-16 md:pb-24">
+      <div class="reveal relative max-w-6xl mx-auto overflow-hidden rounded-[2.5rem] bg-linear-to-br from-rosa via-rosa-claro to-leche px-6 py-14 md:p-16 text-center md:text-left md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-12">
+        <svg class="girar absolute top-6 left-6 size-6 text-blanco" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-brillo"/></svg>
+        <div>
+          <h2 class="font-serif font-semibold text-4xl sm:text-5xl leading-tight text-balance">Regálate un momento <em class="font-medium text-profundo">de amor propio</em></h2>
+          <p class="mt-4 text-texto/80 max-w-lg mx-auto md:mx-0">Escríbenos y te ayudamos a elegir tu rutina. Respondemos rápido. 💗</p>
+          <a data-wa href="#" target="_blank" rel="noopener"
+             class="brillo mt-8 inline-flex items-center justify-center gap-2.5 min-h-14 px-8 rounded-full bg-profundo text-blanco font-medium shadow-[0_14px_34px_-12px_rgba(180,86,110,.7)] hover:bg-profundo-oscuro hover:-translate-y-0.5 transition">
+            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+        <img src="kit.jpg" alt="" loading="lazy" width="708" height="882"
+             class="hidden md:block w-64 aspect-square object-cover rounded-full border-8 border-blanco/70 shadow-xl">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       5. FOOTER
+       ============================================================ -->
+  <footer class="bg-blanco border-t border-rosa-claro pt-12 pb-28 md:pb-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-5">
+      <img src="logo.jpg" alt="Logo de Kits de Amor: El amor empieza contigo" loading="lazy" width="112" height="112" class="size-28 rounded-full ring-1 ring-rosa">
+      <p class="font-serif italic text-xl text-suave">El amor empieza contigo</p>
+
+      <nav aria-label="Redes sociales" class="flex gap-3">
+        <a data-red="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram de Kits de Amor"
+           class="size-11 rounded-full border border-rosa grid place-items-center text-profundo hover:bg-profundo hover:text-blanco hover:border-profundo transition">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-instagram"/></svg>
+        </a>
+        <a data-red="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok de Kits de Amor"
+           class="size-11 rounded-full border border-rosa grid place-items-center text-profundo hover:bg-profundo hover:text-blanco hover:border-profundo transition">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-tiktok"/></svg>
+        </a>
+        <a data-red="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook de Kits de Amor"
+           class="size-11 rounded-full border border-rosa grid place-items-center text-profundo hover:bg-profundo hover:text-blanco hover:border-profundo transition">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-facebook"/></svg>
+        </a>
+      </nav>
+
+      <p class="text-xs text-suave">© <span data-anio>2026</span> Kits de Amor. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       6. BOTÓN FLOTANTE DE WHATSAPP
+       ============================================================ -->
+  <a data-wa href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
+     class="pulso fixed z-50 right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] size-16 rounded-full bg-[#25D366] text-blanco grid place-items-center shadow-[0_12px_30px_-8px_rgba(37,211,102,.7)] hover:scale-105 transition isolate">
+    <svg class="size-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <!-- ============================================================
+       ÍCONOS (se usan con <use href="#i-nombre"/>)
+       ============================================================ -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></symbol>
+    <symbol id="i-corazon" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.8c0 5.8-7.5 10.4-7.5 10.4Z"/></symbol>
+    <symbol id="i-brillo" viewBox="0 0 24 24"><path d="M12 2l1.9 6.6L20.5 10.5l-6.6 1.9L12 19l-1.9-6.6L3.5 10.5l6.6-1.9Z"/></symbol>
+    <symbol id="i-camion" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4.2l3.3 3.4v3.1h-7.5"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="17" cy="17.5" r="1.9"/></symbol>
+    <symbol id="i-ubicacion" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.2a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z"/><path d="M12 13.2s-2.6-1.6-2.6-3.6a1.5 1.5 0 0 1 2.6-1 1.5 1.5 0 0 1 2.6 1c0 2-2.6 3.6-2.6 3.6Z"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.2c0 4.7-3.2 8.3-7.5 9.8-4.3-1.5-7.5-5.1-7.5-9.8V6Z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+    <symbol id="i-limpiador" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5.5"/><circle cx="17" cy="7.5" r="3"/><circle cx="18" cy="16" r="2"/><path d="M6.5 12.5a2.6 2.6 0 0 1 2.2-1.6"/></symbol>
+    <symbol id="i-tonico" viewBox="0 0 24 24"><rect x="7.5" y="7.5" width="9" height="14" rx="2.5"/><rect x="9.5" y="2.5" width="5" height="5" rx="1.2"/><path d="M7.5 12.5h9"/><path d="M12 15.6s-1.4.9-1.4 1.9a1.4 1.4 0 0 0 2.8 0c0-1-1.4-1.9-1.4-1.9Z"/></symbol>
+    <symbol id="i-suero" viewBox="0 0 24 24"><path d="M10.5 2.5h3a1 1 0 0 1 1 1V7h-5V3.5a1 1 0 0 1 1-1Z"/><path d="M8.5 7h7"/><path d="M10 7v8.5a2 2 0 0 0 4 0V7"/><path d="M12 19.6s-1.2.9-1.2 1.6a1.2 1.2 0 0 0 2.4 0c0-.7-1.2-1.6-1.2-1.6Z"/></symbol>
+    <symbol id="i-crema" viewBox="0 0 24 24"><rect x="3.5" y="10.5" width="17" height="10" rx="3"/><rect x="5" y="6" width="14" height="4.5" rx="1.5"/><path d="M12 17.2s-2-1.2-2-2.6a1.1 1.1 0 0 1 2-.7 1.1 1.1 0 0 1 2 .7c0 1.4-2 2.6-2 2.6Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.6a3.6 3.6 0 1 1-3.6-3.6"/><path d="M14 3c.4 2.9 2.4 4.7 5.2 4.8"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14.5 21v-7.5H17l.5-3.2h-3V8.6c0-.9.4-1.6 1.7-1.6h1.4V4.2a17 17 0 0 0-2.3-.2c-2.4 0-3.9 1.4-3.9 4v2.3H8.8v3.2h2.6V21"/></symbol>
+  </svg>
+
+  <!-- ============================================================
+       CONFIGURACIÓN: edita aquí el WhatsApp, el mensaje, la ciudad
+       y las redes. Se aplica a todos los botones de la página.
+       ============================================================ -->
+  <script>
+    const CONFIG = {
+      whatsapp: "573025368697",                      // 57 + número, sin espacios ni +
+      mensaje: "Hola, quiero el Kit De Amor 💗",      // mensaje de los botones generales
+      mensajeProducto: "Hola, quiero {producto} de Kits De Amor 💗", // botones "Pedir" de cada producto
+      ciudad: "tu ciudad",                           // ej: "Barranquilla"
+      instagram: "https://www.instagram.com/kitsdeamor_/",
+      tiktok: "",                                    // déjalo vacío para ocultar el ícono
+      facebook: "",                                  // déjalo vacío para ocultar el ícono
+    };
+
+    // --- No hace falta tocar nada de aquí para abajo ---
+
+    const linkWhatsApp = (texto) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`;
+
+    document.querySelectorAll("[data-wa]").forEach((a) => {
+      const producto = a.dataset.producto;
+      a.href = linkWhatsApp(producto ? CONFIG.mensajeProducto.replace("{producto}", producto) : CONFIG.mensaje);
+    });
+
+    document.querySelectorAll("[data-red]").forEach((a) => {
+      const url = CONFIG[a.dataset.red];
+      if (url) a.href = url; else a.remove();
+    });
+
+    document.querySelectorAll("[data-ciudad]").forEach((el) => (el.textContent = CONFIG.ciudad));
+    document.querySelectorAll("[data-anio]").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+    // Aparición al hacer scroll
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
