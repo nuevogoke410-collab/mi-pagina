@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dulce Marea · Heladería artesanal en Barranquilla</title>
+<meta name="description" content="Helados y postres artesanales con frutas del Caribe, hechos a mano en Barranquilla. Pide por WhatsApp. (Negocio ficticio · demo de portafolio).">
+<meta name="theme-color" content="#FFF5E9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%A6%3C/text%3E%3C/svg%3E">
+
+<!-- Tipografías: Fraunces (títulos) y Manrope (texto) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- Librerías desde CDN: GSAP + ScrollTrigger (animaciones) y Lenis (scroll suave).
+     Three.js (3D) se carga desde script.js solo cuando hace falta. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script defer src="script.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- Íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.8 2.2 4.6 5 5"/></symbol>
+  <symbol id="i-face" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 3.5h-2a4 4 0 0 0-4 4V21M6.5 11h8"/></symbol>
+  <symbol id="i-marca" viewBox="0 0 40 40">
+    <path d="M12.5 19 20 37l7.5-18Z" fill="#F7C873" stroke="#3A2118" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M8.5 19.5C8.5 9 31.5 9 31.5 19.5q-2.9 2.6-5.8 0-2.9 2.6-5.7 0-2.9 2.6-5.8 0-2.8 2.6-5.7 0Z" fill="#F3A5B6" stroke="#3A2118" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- Pantalla de carga -->
+<div class="loader" aria-hidden="true" data-tema="oscuro">
+  <div class="loader__inner">
+    <p class="loader__name"><span data-nombre>Dulce Marea</span></p>
+    <div class="loader__bar"><span></span></div>
+    <p class="loader__meta"><span>Heladería artesanal</span><span class="loader__count">00</span></p>
+  </div>
+  <svg class="loader__drip" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" d="M0 0h1440v38c-40 0-52 18-58 52-6 40-46 40-48 0-2-30-24-44-60-44-50 0-70 10-96 10-30 0-40-12-80-12-44 0-56 26-60 76-4 56-52 56-56 0-3-46-22-62-66-62-60 0-90 18-140 18-38 0-52-14-92-14-40 0-58 20-62 48-5 34-44 34-48 0-4-30-22-44-62-44-56 0-82 14-130 14-40 0-56-12-96-12-38 0-54 22-58 68-4 50-50 50-54 0-4-44-24-66-70-66-40 0-58 8-104 8V0Z"/>
+  </svg>
+</div>
+
+<!-- Cursor personalizado (solo en computador) -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"><div class="cursor__shape"><span class="cursor__label"></span></div></div>
+</div>
+
+<!-- Navegación -->
+<header class="nav">
+  <a class="nav__logo" href="#inicio" aria-label="Ir al inicio">
+    <svg class="nav__mark" aria-hidden="true"><use href="#i-marca"/></svg>
+    <span data-nombre>Dulce Marea</span>
+  </a>
+  <nav class="nav__links" aria-label="Principal">
+    <a href="#sabores">Sabores</a>
+    <a href="#historia">Historia</a>
+    <a href="#postres">Postres</a>
+    <a href="#pedidos">Pedidos</a>
+    <a href="#visitanos">Visítanos</a>
+  </nav>
+  <a class="btn btn--choco btn--sm nav__cta" data-wa href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir</span></a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="nav__menu-txt">Menú</span><span class="nav__menu-ico" aria-hidden="true"><i></i><i></i></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <svg class="menu__blob" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M44.7-61.6C57.8-52.4 68.2-38.8 73.1-23.2 78-7.6 77.3 10 70.4 24.6 63.5 39.2 50.3 50.8 35.4 58.6 20.5 66.4 3.8 70.4-13.4 69.3-30.6 68.2-48.3 62-58.9 49.6-69.5 37.2-73 18.6-71.9 1.2-70.8-16.2-65.1-32.4-54.2-42.6-43.3-52.8-27.2-57-11.6-62.5 4-68 31.6-70.8 44.7-61.6Z" transform="translate(100 100)"/></svg>
+  <nav class="menu__links" aria-label="Menú">
+    <a href="#sabores">Sabores</a>
+    <a href="#historia"><em>Historia</em></a>
+    <a href="#postres">Postres</a>
+    <a href="#pedidos"><em>Pedidos</em></a>
+    <a href="#visitanos">Visítanos</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--choco" data-wa href="#"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir por WhatsApp</span></a>
+    <p>Barranquilla · Hecho a mano</p>
+  </div>
+</div>
+
+<main id="contenido">
+
+  <!-- 01 · PORTADA -->
+  <section class="hero" id="inicio" aria-label="Portada">
+    <div class="hero__blobs" aria-hidden="true">
+      <svg class="blob blob--a" viewBox="0 0 200 200"><path d="M47.3-57.8C60.2-45.6 69.1-29.4 72.6-12.1 76.1 5.2 74.2 23.6 65.4 37.7 56.6 51.8 40.9 61.6 23.6 67.6 6.3 73.6-12.6 75.8-29.5 69.8-46.4 63.8-61.3 49.6-69.1 32.6-76.9 15.6-77.6-4.2-71.2-20.9-64.8-37.6-51.3-51.2-36.2-63-21.1-74.8-4.4-84.8 10.9-82.5 26.2-80.2 34.4-70 47.3-57.8Z" transform="translate(100 100)"/></svg>
+      <svg class="blob blob--b" viewBox="0 0 200 200"><path d="M39.9-50.1C51.3-38.9 59.4-25.1 64.2-9.2 69 6.7 70.5 24.7 62.4 36.9 54.3 49.1 36.6 55.5 19.3 60.6 2 65.7-14.9 69.5-29.7 64.4-44.5 59.3-57.2 45.3-63.3 29.3-69.4 13.3-68.9-4.7-62.4-19.6-55.9-34.5-43.4-46.3-29.6-57.1-15.8-67.9-.7-77.7 13.1-75.2 26.9-72.7 28.5-61.3 39.9-50.1Z" transform="translate(100 100)"/></svg>
+      <svg class="blob blob--c" viewBox="0 0 200 200"><path d="M54.1-61.3C67.6-50.7 74.6-31.5 75.2-13.4 75.8 4.7 70 21.7 59.6 35.1 49.2 48.5 34.2 58.3 16.9 64.5-.4 70.7-20 73.3-35.6 66.3-51.2 59.3-62.8 42.7-68.2 24.7-73.6 6.7-72.8-12.7-64.6-28.1-56.4-43.5-40.8-54.9-24.5-64.9-8.2-74.9 8.8-83.5 24.6-80.6 40.4-77.7 40.6-71.9 54.1-61.3Z" transform="translate(100 100)"/></svg>
+    </div>
+
+    <div class="hero__meta">
+      <span>N.º 01 — Portada</span>
+      <span class="hero__meta-opt">Edición de verano</span>
+      <span>Barranquilla · CO</span>
+    </div>
+
+    <h1 class="hero__title" aria-label="Dulce Marea">
+      <span class="hero__word hero__word--1" aria-hidden="true">Dulce</span>
+      <span class="hero__word hero__word--2" aria-hidden="true">Marea</span>
+    </h1>
+
+    <div class="hero__stage" role="img" aria-label="Helado en 3D: cono de waffle con bolas de maracuyá, fresa y coco bañado en chocolate" data-cursor="Muévelo">
+      <canvas id="helado3d" aria-hidden="true"></canvas>
+      <!-- Ilustración de respaldo: se ve si el 3D no puede cargar -->
+      <svg class="hero__fallback" viewBox="0 0 300 460" aria-hidden="true">
+        <defs>
+          <pattern id="hf-waffle" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="18" height="18" fill="#E3AE74"/><path d="M0 0H18M0 0V18" stroke="#B87A45" stroke-width="4"/>
+          </pattern>
+        </defs>
+        <path d="M88 248H212L150 452Z" fill="url(#hf-waffle)" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="78" y="234" width="144" height="26" rx="13" fill="#D99A5E" stroke="#3A2118" stroke-width="3"/>
+        <path d="M64 236 C64 179 102.5 154.3 150 154.3 C197.5 154.3 236 179 236 236 Q221.7 254.9 207.3 239.4 Q193 249.8 178.7 239.4 Q164.3 254.9 150 239.4 Q135.7 249.8 121.3 239.4 Q107 254.9 92.7 239.4 Q78.3 249.8 64 236Z" fill="#F8D27F" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+        <g fill="#2A1A12"><ellipse cx="104" cy="206" rx="3" ry="4.5" transform="rotate(-20 104 206)"/><ellipse cx="190" cy="214" rx="3" ry="4.5" transform="rotate(30 190 214)"/><ellipse cx="128" cy="226" rx="3" ry="4.5"/><ellipse cx="214" cy="226" rx="3" ry="4.5" transform="rotate(15 214 226)"/><ellipse cx="88" cy="226" rx="3" ry="4.5" transform="rotate(40 88 226)"/></g>
+        <path d="M80 160 C80 109.6 114 87.8 156 87.8 C198 87.8 232 109.6 232 160 Q219.3 176.7 206.7 163 Q194 172.2 181.3 163 Q168.7 176.7 156 163 Q143.3 172.2 130.7 163 Q118 176.7 105.3 163 Q92.7 172.2 80 160Z" fill="#F6B8C6" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+        <g fill="#E07A92"><circle cx="112" cy="136" r="3.5"/><circle cx="196" cy="128" r="3"/><circle cx="150" cy="148" r="3.5"/><circle cx="214" cy="150" r="3"/><circle cx="98" cy="152" r="3"/></g>
+        <path d="M80 94 C80 50.3 109.5 31.3 146 31.3 C182.5 31.3 212 50.3 212 94 Q201 108.5 190 96.6 Q179 104.6 168 96.6 Q157 108.5 146 96.6 Q135 104.6 124 96.6 Q113 108.5 102 96.6 Q91 104.6 80 94Z" fill="#FFF8EC" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M84 76C88 42 116 30 146 30s58 12 62 46c-4 8-8 4-10 12-2 12-10 12-10 2-2-8-10-6-12 0-2 22-14 22-14 6-2-10-12-10-16-4s-12 4-14-2-12-4-14 6c-2 24-16 24-16 4 0-10-8-12-12-8s-8-2-6-14Z" fill="#4A2A1C" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+        <g stroke-width="4" stroke-linecap="round"><path d="M118 46l8 4" stroke="#F3A5B6"/><path d="M150 40l-2 9" stroke="#9AD7EA"/><path d="M176 50l8-3" stroke="#F7C873"/><path d="M134 60l6 6" stroke="#FFF5E9"/><path d="M164 64l9 1" stroke="#F3A5B6"/><path d="M104 66l4 7" stroke="#9AD7EA"/></g>
+      </svg>
+    </div>
+
+    <div class="hero__badge" aria-hidden="true">
+      <svg class="hero__badge-ring" viewBox="0 0 120 120">
+        <defs><path id="circulo-hero" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs>
+        <text><textPath href="#circulo-hero" textLength="296" lengthAdjust="spacing">HECHO A MANO • DESDE 1998 • HECHO A MANO • DESDE 1998 •</textPath></text>
+      </svg>
+      <svg class="hero__badge-mark"><use href="#i-marca"/></svg>
+    </div>
+
+    <div class="hero__aside">
+      <p class="hero__lead">Helados de frutas del Caribe, batidos a mano cada mañana en Barranquilla.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--choco" href="#sabores"><span>Ver sabores</span><svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+        <a class="btn btn--line" data-wa href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir por WhatsApp</span></a>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#sabores" aria-label="Bajar a los sabores"><span>Desliza</span><i aria-hidden="true"></i></a>
+  </section>
+
+  <!-- Cintas infinitas -->
+  <div class="cintas" aria-hidden="true">
+    <div class="marquee marquee--fresa">
+      <div class="marquee__track">
+        <p class="marquee__group"><span>Helado artesanal</span><i>✦</i><span><em>Frío que abraza</em></span><i>✦</i><span>Hecho en Barranquilla</span><i>✦</i><span><em>Fruta de verdad</em></span><i>✦</i></p>
+        <p class="marquee__group"><span>Helado artesanal</span><i>✦</i><span><em>Frío que abraza</em></span><i>✦</i><span>Hecho en Barranquilla</span><i>✦</i><span><em>Fruta de verdad</em></span><i>✦</i></p>
+      </div>
+    </div>
+    <div class="marquee marquee--cielo marquee--reversa">
+      <div class="marquee__track">
+        <p class="marquee__group"><span>Maracuyá</span><i>●</i><span>Coco</span><i>●</i><span>Arequipe</span><i>●</i><span>Guanábana</span><i>●</i><span>Corozo</span><i>●</i><span>Mango biche</span><i>●</i></p>
+        <p class="marquee__group"><span>Maracuyá</span><i>●</i><span>Coco</span><i>●</i><span>Arequipe</span><i>●</i><span>Guanábana</span><i>●</i><span>Corozo</span><i>●</i><span>Mango biche</span><i>●</i></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 · SABORES (carrusel horizontal con el scroll) -->
+  <section class="sabores" id="sabores" aria-labelledby="sabores-titulo">
+    <div class="sabores__pin">
+      <div class="sabores__track">
+        <div class="sabores__intro">
+          <p class="folio">N.º 02 — Sabores</p>
+          <h2 class="sabores__title display" id="sabores-titulo" data-titulo>Sabores <em>de la Costa</em></h2>
+          <p class="sabores__text">Ocho helados con fruta de verdad, sin colorantes y sin afanes. Cada uno con su color, como las casas del barrio.</p>
+          <p class="sabores__hint"><span>Sigue bajando</span><svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></p>
+        </div>
+        <!-- Las tarjetas de sabores se crean desde script.js (CONFIG.sabores) -->
+        <div class="sabores__outro">
+          <p class="folio">¿No te decides?</p>
+          <p class="sabores__outro-title display">Pide <em data-combo-nombre>La Marea</em></p>
+          <p class="sabores__text" data-combo-descripcion>Tres bolas a tu gusto, en cono o en vaso.</p>
+          <p class="sabores__outro-price" data-combo-precio>$24.900</p>
+          <a class="btn btn--choco btn--lg" data-wa-combo href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir La Marea</span></a>
+        </div>
+      </div>
+      <div class="sabores__progress" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <!-- 03 · HISTORIA -->
+  <section class="historia" id="historia" aria-labelledby="historia-titulo">
+    <svg class="historia__blob" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M39.9-50.1C51.3-38.9 59.4-25.1 64.2-9.2 69 6.7 70.5 24.7 62.4 36.9 54.3 49.1 36.6 55.5 19.3 60.6 2 65.7-14.9 69.5-29.7 64.4-44.5 59.3-57.2 45.3-63.3 29.3-69.4 13.3-68.9-4.7-62.4-19.6-55.9-34.5-43.4-46.3-29.6-57.1-15.8-67.9-.7-77.7 13.1-75.2 26.9-72.7 28.5-61.3 39.9-50.1Z" transform="translate(100 100)"/></svg>
+    <div class="historia__side">
+      <p class="folio">N.º 03 — Historia</p>
+      <h2 class="historia__label" id="historia-titulo">Tres generaciones <em>batiendo helado</em></h2>
+      <figure class="historia__foto">
+        <!-- FOTO REAL: cambia este dibujo por una foto de la familia o del local, por ejemplo:
+             <img src="img/familia.webp" alt="La familia en la heladería" width="800" height="1000" loading="lazy"> -->
+        <svg viewBox="0 0 200 250" role="img" aria-label="Dibujo de una garrafa de madera para hacer helado">
+          <circle cx="100" cy="112" r="70" fill="#FFF5E9" opacity=".45"/>
+          <path d="M100 98V66h34" fill="none" stroke="#3A2118" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="128" y="58" width="12" height="26" rx="6" fill="#F3A5B6" stroke="#3A2118" stroke-width="3"/>
+          <rect x="66" y="92" width="68" height="16" rx="6" fill="#DCE9EE" stroke="#3A2118" stroke-width="3"/>
+          <path d="M52 108H148L138 232H62Z" fill="#C98E52" stroke="#3A2118" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M76 110 70 230M100 110v120M124 110l6 120" stroke="#A8703C" stroke-width="2.5"/>
+          <path d="M53 132H147M57 204H143" stroke="#6B4A3A" stroke-width="7"/>
+          <g fill="#DFF3F8" stroke="#3A2118" stroke-width="2"><rect x="58" y="98" width="14" height="14" rx="3" transform="rotate(-14 65 105)"/><rect x="128" y="96" width="14" height="14" rx="3" transform="rotate(12 135 103)"/><rect x="88" y="86" width="12" height="12" rx="3" transform="rotate(20 94 92)"/></g>
+          <ellipse cx="100" cy="236" rx="56" ry="7" fill="#3A2118" opacity=".14"/>
+        </svg>
+      </figure>
+      <p class="historia__caption">La primera garrafa de la abuela Carmen.</p>
+    </div>
+    <div class="historia__main">
+      <p class="historia__text" data-palabras>
+        Todo empezó en 1998, en el patio de la abuela Carmen.
+        <span class="pill pill--fresa" aria-hidden="true"><svg viewBox="0 0 60 30"><path d="M20 17c0-8 20-8 20 0q-2.5 2-5 0-2.5 2-5 0-2.5 2-5 0-2.5 2-5 0Z" fill="#FFF5E9"/><path d="M24 18l6 9 6-9" fill="#F7C873"/></svg></span>
+        Una garrafa de madera, hielo con sal y las frutas que traía el señor del carretillo.
+        Hoy somos tres generaciones batiendo cada mañana, a mano y sin afanes,
+        <span class="pill pill--cielo" aria-hidden="true"><svg viewBox="0 0 60 30"><path d="M8 18q5.5-6 11 0t11 0 11 0 11 0" fill="none" stroke="#FFF5E9" stroke-width="3" stroke-linecap="round"/></svg></span>
+        para que cada cucharada sepa a domingo en familia.
+      </p>
+      <p class="historia__firma"><strong>— Familia Ríos</strong><span>Abuela Carmen, mamá Luz y Andrés</span></p>
+    </div>
+  </section>
+
+  <!-- 04 · POSTRES DESTACADOS -->
+  <section class="postres" id="postres" aria-labelledby="postres-titulo">
+    <svg class="postres__blob" viewBox="0 0 200 200" aria-hidden="true"><path fill="currentColor" d="M54.1-61.3C67.6-50.7 74.6-31.5 75.2-13.4 75.8 4.7 70 21.7 59.6 35.1 49.2 48.5 34.2 58.3 16.9 64.5-.4 70.7-20 73.3-35.6 66.3-51.2 59.3-62.8 42.7-68.2 24.7-73.6 6.7-72.8-12.7-64.6-28.1-56.4-43.5-40.8-54.9-24.5-64.9-8.2-74.9 8.8-83.5 24.6-80.6 40.4-77.7 40.6-71.9 54.1-61.3Z" transform="translate(100 100)"/></svg>
+    <div class="postres__head">
+      <p class="folio">N.º 04 — Postres</p>
+      <h2 class="postres__title display" id="postres-titulo" data-titulo>Postres <em>de la casa</em></h2>
+      <p class="postres__intro">Para cuando una bola no alcanza. Hechos al momento y pensados para compartir… o no.</p>
+    </div>
+    <!-- Los postres se crean desde script.js (CONFIG.postres) -->
+    <div class="postres__grid"></div>
+  </section>
+
+  <!-- 05 · PEDIDOS -->
+  <section class="pedidos" id="pedidos" aria-labelledby="pedidos-titulo">
+    <div class="pedidos__head">
+      <p class="folio">N.º 05 — Pedidos</p>
+      <h2 class="pedidos__title display" id="pedidos-titulo" data-titulo>Pedir es tan fácil <em>como derretirse</em></h2>
+    </div>
+    <div class="pasos-wrap">
+      <!-- La línea que une los íconos se calcula en script.js según su posición -->
+      <svg class="pasos__linea" aria-hidden="true"><path pathLength="1"/></svg>
+      <ol class="pasos">
+        <li class="paso">
+          <span class="paso__icono" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#3A2118" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 23l9 20 9-20Z" fill="#F7C873"/><path d="M19 30l9-5M17 25l12 12" stroke-width="1.6"/><path d="M12 23.5c0-12 24-12 24 0q-3 2.6-6 0-3 2.6-6 0-3 2.6-6 0-3 2.6-6 0Z" fill="#F3A5B6"/><path d="M39 6v7M35.5 9.5h7"/></svg>
+          </span>
+          <span class="paso__num">1</span>
+          <h3>Elige tus sabores</h3>
+          <p>Mira la carta y escoge bolas, toppings y postres. Si dudas, la Marea nunca falla.</p>
+        </li>
+        <li class="paso">
+          <span class="paso__icono" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#3A2118" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13a6 6 0 0 1 6-6h22a6 6 0 0 1 6 6v13a6 6 0 0 1-6 6H21l-9 8v-8a6 6 0 0 1-5-6Z" fill="#9AD7EA"/><circle cx="17" cy="19.5" r="1.6" fill="#3A2118"/><circle cx="24" cy="19.5" r="1.6" fill="#3A2118"/><circle cx="31" cy="19.5" r="1.6" fill="#3A2118"/></svg>
+          </span>
+          <span class="paso__num">2</span>
+          <h3>Escríbenos por WhatsApp</h3>
+          <p>Te respondemos en minutos, confirmamos tu pedido y te decimos cuánto tarda.</p>
+        </li>
+        <li class="paso">
+          <span class="paso__icono" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#3A2118" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 19v-4a7 7 0 0 1 14 0v4"/><rect x="11" y="19" width="28" height="21" rx="5" fill="#FFF5E9"/><path d="M25 23.5v12M20 26.5l10 6M30 26.5l-10 6"/><path d="M2 25h5M3.5 31h4"/></svg>
+          </span>
+          <span class="paso__num">3</span>
+          <h3>Recíbelo en casa</h3>
+          <p>Lo llevamos en nevera portátil para que llegue firme, como recién servido.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="pedidos__cta">
+      <a class="btn btn--choco btn--lg" data-wa href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Hacer mi pedido</span></a>
+      <p>Domicilios en Barranquilla y alrededores · Pago en efectivo, transferencia o tarjeta.</p>
+    </div>
+  </section>
+
+  <!-- 06 · UBICACIÓN Y HORARIO -->
+  <section class="visita" id="visitanos" aria-labelledby="visita-titulo">
+    <div class="visita__head">
+      <p class="folio">N.º 06 — Visítanos</p>
+      <h2 class="visita__title display" id="visita-titulo" data-titulo>Te esperamos <em>con la nevera llena</em></h2>
+    </div>
+
+    <div class="visita__mapa">
+      <svg viewBox="0 0 400 300" role="img" aria-label="Mapa ilustrado de Barranquilla con la ubicación de la heladería">
+        <rect width="400" height="300" fill="#FBE8D3"/>
+        <g stroke="#F2D2B2" stroke-width="7" stroke-linecap="round" transform="rotate(-12 200 150)">
+          <path d="M-60 70H460M-60 120H460M-60 170H460M-60 220H460M-60 270H460M10-60V360M70-60V360M130-60V360M190-60V360M250-60V360M310-60V360"/>
+        </g>
+        <path d="M60 156c8-22 52-24 58 0s-12 32-32 30-34-10-26-30Z" fill="#CDE8B5"/>
+        <path d="M232 212c10-16 46-14 48 4s-16 26-32 22-24-12-16-26Z" fill="#CDE8B5"/>
+        <path d="M-10 250C120 214 220 226 410 128" stroke="#F3A5B6" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M128 312C146 210 150 130 126-10" stroke="#F3A5B6" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M0 0H400V40C352 58 300 30 250 46S150 62 100 44 30 54 0 40Z" fill="#9AD7EA"/>
+        <path d="M32 22q10-6 20 0t20 0M196 22q10-6 20 0t20 0M300 30q8-5 16 0t16 0" stroke="#FFF5E9" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="96" y="30" class="mapa__txt">Mar Caribe</text>
+        <path d="M330 312C312 250 352 210 334 160S306 90 322 40" stroke="#9AD7EA" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <text class="mapa__txt" transform="translate(339 266) rotate(-82)">Río Magdalena</text>
+        <g transform="translate(64 96)" fill="none" stroke-linecap="round"><path d="M0 0c2-12-2-22 2-32" stroke="#C98E52" stroke-width="4"/><path d="M2-32c-10-6-20-2-24 6M2-32c10-6 20-2 24 6M2-32c-6-10-16-12-22-10M2-32c6-10 16-12 22-10" stroke="#7FB069" stroke-width="5"/></g>
+        <g transform="translate(262 92)" fill="none" stroke-linecap="round"><path d="M0 0c-2-12 2-22-2-32" stroke="#C98E52" stroke-width="4"/><path d="M-2-32c-10-6-20-2-24 6M-2-32c10-6 20-2 24 6M-2-32c-6-10-16-12-22-10M-2-32c6-10 16-12 22-10" stroke="#7FB069" stroke-width="5"/></g>
+        <path d="M34 300C70 262 120 250 160 222S200 172 208 158" stroke="#3A2118" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="mapa__pin" aria-hidden="true">
+        <span class="mapa__pin-label" data-nombre>Dulce Marea</span>
+        <svg viewBox="0 0 40 48"><path d="M11 20 20 46l9-26Z" fill="#F7C873" stroke="#3A2118" stroke-width="2.4" stroke-linejoin="round"/><path d="M6 21C6 6 34 6 34 21q-3.5 3-7 0-3.5 3-7 0-3.5 3-7 0-3.5 3-7 0Z" fill="#F3A5B6" stroke="#3A2118" stroke-width="2.4" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+
+    <div class="visita__card">
+      <p class="estado" id="estado"><span class="estado__dot" aria-hidden="true"></span><span id="estado-texto">Consultando horario…</span></p>
+      <div class="visita__bloque">
+        <h3>Dirección</h3>
+        <p class="visita__dir" data-direccion>Carrera 00 # 00-00, Barranquilla, Atlántico</p>
+        <p class="visita__ref" data-referencia>Dirección de ejemplo</p>
+      </div>
+      <div class="visita__bloque">
+        <h3>Horario</h3>
+        <ul class="horario" id="horario"></ul>
+      </div>
+      <div class="visita__acciones">
+        <a class="btn btn--choco btn--sm" data-mapa href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>Cómo llegar</span></a>
+        <a class="btn btn--line btn--sm" data-wa href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-telefono>+57 300 000 0000</span></a>
+      </div>
+    </div>
+
+    <div class="visita__sticker" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <defs><path id="circulo-visita" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+        <text><textPath href="#circulo-visita" textLength="284" lengthAdjust="spacing">PERRITOS BIENVENIDOS • HAY SOMBRITA Y BRISA •</textPath></text>
+      </svg>
+      <span>🐾</span>
+    </div>
+  </section>
+</main>
+
+<!-- 07 · FOOTER -->
+<footer class="footer" data-tema="oscuro">
+  <svg class="footer__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0h1440v28c-120 34-240 40-360 20S840 0 720 18 480 70 360 62 120 18 0 34Z"/></svg>
+  <div class="marquee marquee--crema" aria-hidden="true">
+    <div class="marquee__track">
+      <p class="marquee__group"><span data-nombre>Dulce Marea</span><i>✦</i><span><em>Hasta la próxima cucharada</em></span><i>✦</i><span data-nombre>Dulce Marea</span><i>✦</i><span><em>Frío que abraza</em></span><i>✦</i></p>
+      <p class="marquee__group"><span data-nombre>Dulce Marea</span><i>✦</i><span><em>Hasta la próxima cucharada</em></span><i>✦</i><span data-nombre>Dulce Marea</span><i>✦</i><span><em>Frío que abraza</em></span><i>✦</i></p>
+    </div>
+  </div>
+
+  <div class="footer__main">
+    <p class="folio">N.º 07 — Hasta la próxima</p>
+    <p class="footer__frase display" data-titulo>La vida es corta. <em>Pide doble bola.</em></p>
+    <a class="btn btn--fresa btn--lg footer__cta" data-wa href="#" data-cursor="Pedir"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Escríbenos por WhatsApp</span></a>
+
+    <div class="footer__cols">
+      <div>
+        <h3>Visítanos</h3>
+        <p data-direccion>Carrera 00 # 00-00, Barranquilla, Atlántico</p>
+      </div>
+      <div>
+        <h3>Escríbenos</h3>
+        <p><a data-wa href="#" data-telefono>+57 300 000 0000</a></p>
+      </div>
+      <div>
+        <h3>Síguenos</h3>
+        <ul class="redes">
+          <li><a href="#" data-demo aria-label="Instagram (enlace de ejemplo)"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg><span>Instagram</span></a></li>
+          <li><a href="#" data-demo aria-label="TikTok (enlace de ejemplo)"><svg class="ico" aria-hidden="true"><use href="#i-tiktok"/></svg><span>TikTok</span></a></li>
+          <li><a href="#" data-demo aria-label="Facebook (enlace de ejemplo)"><svg class="ico" aria-hidden="true"><use href="#i-face"/></svg><span>Facebook</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Navega</h3>
+        <ul class="footer__nav">
+          <li><a href="#sabores">Sabores</a></li>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#postres">Postres</a></li>
+          <li><a href="#inicio">Volver arriba ↑</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer__wordmark" aria-hidden="true" data-nombre>Dulce Marea</p>
+  <p class="footer__legal">© <span data-anio>2026</span> <span data-nombre>Dulce Marea</span> · Negocio ficticio creado como demo de portafolio. Nombres, precios, textos y datos de contacto son inventados.</p>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="wa-float" data-wa href="#" aria-label="Escríbenos por WhatsApp" data-cursor="¡Hola!">
+  <span class="wa-float__tip">¿Antojo? Escríbenos</span>
+  <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+</body>
+</html>

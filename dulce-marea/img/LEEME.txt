@@ -1,0 +1,12 @@
+CARPETA PARA FOTOS REALES
+=========================
+
+Pon aquí las fotos de los productos cuando las tengas.
+Recomendado: formato .webp, unos 1200 px de ancho y menos de 200 KB cada una.
+
+Nombres sugeridos (así ya coinciden con los comentarios del código):
+  - familia.webp       → sección "Historia" (index.html, busca "FOTO REAL")
+  - sabor-1.webp ...   → tarjetas de sabores (script.js, busca "FOTO REAL")
+  - postre-1.webp ...  → postres destacados (script.js, busca "FOTO REAL")
+
+Cada comentario "FOTO REAL" del código muestra la línea <img ...> lista para copiar.
