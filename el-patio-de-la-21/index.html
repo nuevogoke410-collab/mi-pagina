@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Patio de la 21 · Restaurante familiar abierto las 24 horas en Barranquilla</title>
+<meta name="description" content="Restaurante familiar en Barranquilla, abierto las 24 horas. Chivo asado, cazuela de mariscos, parrilla, comida rápida y postres. Cumpleaños y celebraciones con shows en vivo.">
+<meta name="theme-color" content="#FF9F1C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%BD%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!--
+  =====================================================================
+  PÁGINA DE MUESTRA · EL PATIO DE LA 21
+  Antes de mostrarla, busca (Ctrl+F) "PENDIENTE" y "EJEMPLO" y reemplaza:
+   - El logo (3 espacios: cabecera, portada y pie de página).
+   - Las fotos: local, chivo asado, cazuela de mariscos, parrilla y eventos.
+   - Descripciones y precios de los platos, y la carta completa.
+   - Datos de eventos: capacidad, paquetes, días y horarios de los shows.
+   - Las 3 opiniones de ejemplo (por reseñas reales de Google).
+   - Redes sociales y tu nombre o marca en el pie de página.
+  Para poner una foto: crea una carpeta "fotos" junto a este archivo y
+  cambia el contenido del recuadro por, por ejemplo:
+    <img src="fotos/chivo-asado.jpg" alt="Chivo asado de El Patio de la 21">
+  =====================================================================
+-->
+
+<style>
+:root {
+  /* Colores cálidos y caribeños */
+  --crema: #FFF6E6;
+  --arena: #FFE8C2;
+  --sol: #FFD23F;
+  --mango: #FF9F1C;
+  --coral: #F25C3B;
+  --rojo: #B8341B;
+  --mar: #0B7480;
+  --mar-claro: #D4F3F2;
+  --cafe: #3A1F10;
+  --cafe-2: #6A4632;
+  --wa: #25D366;
+  --wa-tinta: #053B1B;
+
+  --f-titulo: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --f-texto: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radio: 24px;
+  --sombra: 0 14px 34px -18px rgba(58, 31, 16, .45);
+  --cabecera: 68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 112.5%; scroll-behavior: smooth; scroll-padding-top: calc(var(--cabecera) + 12px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--crema); color: var(--cafe); font-family: var(--f-texto); line-height: 1.6; overflow-x: hidden; }
+img, svg, iframe { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: var(--f-titulo); line-height: 1.05; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+:focus-visible { outline: 3px solid var(--mar); outline-offset: 3px; border-radius: 10px; }
+.contenedor { width: min(100% - 32px, 1120px); margin-inline: auto; }
+.icono { width: 1.3em; height: 1.3em; flex: none; }
+
+/* Texto pendiente: bien visible para reemplazarlo antes de mostrar la página */
+.pendiente {
+  display: inline-block;
+  padding: .1em .45em;
+  border: 2px dashed #D69A00;
+  border-radius: 8px;
+  background: #FFF3A6;
+  color: #5C3300;
+  font-size: .85em;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 54px; padding: .7em 1.4em;
+  border: 0; border-radius: 999px;
+  font-family: var(--f-titulo); font-size: 1.05rem; font-weight: 800; line-height: 1.1; text-align: center; text-decoration: none;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.boton:hover { transform: translateY(-2px); }
+.boton:active { transform: scale(.97); }
+.boton--wa { background: var(--wa); color: var(--wa-tinta); box-shadow: 0 10px 22px -12px rgba(5, 59, 27, .7); }
+.boton--wa:hover { background: #3BE17A; }
+.boton--sol { background: var(--sol); color: var(--cafe); box-shadow: 0 10px 22px -12px rgba(58, 31, 16, .6); }
+.boton--sol:hover { background: #FFDD66; }
+.boton--borde { background: transparent; color: var(--cafe); box-shadow: inset 0 0 0 2.5px var(--cafe); }
+.boton--borde:hover { background: rgba(58, 31, 16, .06); }
+.boton--grande { width: 100%; min-height: 64px; padding-inline: 1em; font-size: 1.2rem; }
+.boton--chico { min-height: 44px; padding: .5em 1em; font-size: .95rem; }
+@media (min-width: 640px) { .boton--grande { width: auto; padding-inline: 2em; } }
+
+/* ---------- Espacios para logo y fotos ---------- */
+.logo-espacio {
+  display: grid; place-items: center; flex: none;
+  width: 108px; height: 108px; border-radius: 50%;
+  border: 3px dashed var(--cafe-2);
+  background: rgba(255, 255, 255, .65);
+  color: var(--cafe-2);
+  font-family: var(--f-titulo); font-size: .8rem; font-weight: 800; line-height: 1.15; text-align: center;
+}
+.logo-espacio img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.logo-espacio--mini { width: 44px; height: 44px; border-width: 2px; font-size: .55rem; }
+
+.foto {
+  position: relative; overflow: hidden;
+  display: grid; place-content: center; justify-items: center; gap: 8px;
+  aspect-ratio: 4 / 3; padding: 16px;
+  border-radius: var(--radio);
+  border: 3px dashed rgba(58, 31, 16, .35);
+  background:
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, .5) 0 14px, rgba(255, 255, 255, 0) 14px 28px),
+    var(--arena);
+  color: var(--cafe-2);
+  text-align: center;
+}
+.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.foto__icono { font-size: 2.6rem; line-height: 1; }
+.foto__texto { font-family: var(--f-titulo); font-size: 1.15rem; font-weight: 800; line-height: 1.2; }
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 246, 230, .94);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(58, 31, 16, .08);
+}
+.cabecera__fila { display: flex; align-items: center; gap: 12px; min-height: var(--cabecera); }
+.marca { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; text-decoration: none; }
+.marca__nombre { font-family: var(--f-titulo); font-size: 1.2rem; font-weight: 800; line-height: 1; }
+.menu { display: none; }
+.cabecera .boton--wa span { display: none; }
+@media (min-width: 400px) { .cabecera .boton--wa span { display: inline; } }
+
+.atajos { background: var(--sol); }
+.atajos ul { display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px; scrollbar-width: none; }
+.atajos ul::-webkit-scrollbar { display: none; }
+.atajos a {
+  display: block; white-space: nowrap;
+  padding: .45em 1em; border-radius: 999px;
+  background: rgba(255, 255, 255, .7); text-decoration: none;
+  font-weight: 800; font-size: .9rem;
+}
+
+@media (min-width: 960px) {
+  .menu { display: flex; gap: 22px; margin-right: 10px; }
+  .menu a { font-weight: 800; text-decoration: none; padding: 6px 0; border-bottom: 3px solid transparent; }
+  .menu a:hover { border-color: var(--coral); }
+  .atajos { display: none; }
+}
+
+/* ---------- 1. Portada ---------- */
+.portada {
+  position: relative; overflow: hidden;
+  padding: 0 0 56px;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(255, 255, 255, .55) 0 70px, transparent 71px),
+    linear-gradient(170deg, var(--sol) 0%, var(--mango) 62%, var(--coral) 100%);
+}
+.banderines {
+  height: 46px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='46'%3E%3Cpath d='M0 4Q100 14 200 4' fill='none' stroke='%233A1F10' stroke-width='2'/%3E%3Cpath d='M4 5h32L20 40Z' fill='%23F25C3B'/%3E%3Cpath d='M44 7h32L60 42Z' fill='%230B7480'/%3E%3Cpath d='M84 8h32l-16 35Z' fill='%23FFFFFF'/%3E%3Cpath d='M124 7h32l-16 35Z' fill='%232E9E5B'/%3E%3Cpath d='M164 5h32l-16 35Z' fill='%23B8341B'/%3E%3C/svg%3E") repeat-x 0 0 / 200px 46px;
+}
+.portada__grid { display: grid; gap: 34px; padding-top: 22px; }
+.portada__texto { display: grid; justify-items: start; gap: 18px; }
+.portada__antetitulo { font-weight: 800; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; }
+.portada h1 { font-size: clamp(3rem, 15vw, 6rem); font-weight: 800; letter-spacing: -.02em; line-height: .92; }
+.portada h1 span { display: block; color: var(--rojo); }
+.sello-24 {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .45em 1.1em .45em .8em; border-radius: 999px;
+  background: var(--cafe); color: var(--sol);
+  font-family: var(--f-titulo); font-size: clamp(1.35rem, 6vw, 1.9rem); font-weight: 800; line-height: 1.1;
+  box-shadow: var(--sombra);
+}
+.sello-24 .icono { width: 1.15em; height: 1.15em; }
+.portada__lead { max-width: 30ch; font-size: 1.15rem; font-weight: 700; }
+.calificacion {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+  padding: .55em 1em; border-radius: 16px;
+  background: rgba(255, 255, 255, .78); text-decoration: none;
+  font-weight: 800;
+}
+.calificacion small { font-size: .85rem; font-weight: 700; color: var(--cafe-2); }
+.estrellas { position: relative; display: inline-block; font-size: 1.15rem; line-height: 1; letter-spacing: 2px; color: rgba(58, 31, 16, .2); }
+.estrellas::before { content: "★★★★★"; position: absolute; left: 0; top: 0; width: var(--nota, 88%); overflow: hidden; white-space: nowrap; color: #E8A400; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: .4em .9em; border-radius: 999px; background: var(--crema); font-weight: 800; font-size: .92rem; }
+.foto--portada { aspect-ratio: 4 / 5; background-color: rgba(255, 246, 230, .85); }
+
+@media (min-width: 900px) {
+  .portada { padding-bottom: 90px; }
+  .portada__grid { grid-template-columns: 1.1fr .9fr; align-items: center; gap: 56px; padding-top: 40px; }
+  .portada__lead { font-size: 1.3rem; }
+}
+
+/* Separador en forma de ola */
+.ola { display: block; width: 100%; height: 48px; margin-top: -47px; position: relative; }
+
+/* ---------- Secciones ---------- */
+.seccion { padding: 72px 0; }
+.antetitulo { display: inline-block; margin-bottom: 10px; padding: .25em .8em; border-radius: 999px; background: var(--coral); color: #fff; font-weight: 800; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; }
+.seccion h2 { font-size: clamp(2.2rem, 9vw, 3.6rem); font-weight: 800; letter-spacing: -.01em; }
+.intro { max-width: 46ch; margin-top: 14px; font-size: 1.1rem; }
+@media (min-width: 900px) { .seccion { padding: 104px 0; } }
+
+/* ---------- 2. Platos estrella ---------- */
+.platos__grid { display: grid; gap: 22px; margin-top: 34px; }
+.plato { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radio); background: #fff; box-shadow: var(--sombra); }
+.plato .foto { border-radius: 0; border-width: 0 0 3px; }
+.plato__cuerpo { display: grid; gap: 12px; padding: 20px 20px 24px; flex: 1; align-content: start; }
+.plato h3 { font-size: 2rem; font-weight: 800; }
+.plato .boton { margin-top: auto; }
+.etiqueta { justify-self: start; padding: .25em .8em; border-radius: 999px; background: var(--sol); font-weight: 800; font-size: .85rem; }
+.plato--parrilla .etiqueta { background: var(--mar-claro); }
+.carta-nota { display: grid; gap: 10px; margin-top: 30px; padding: 20px 22px; border-radius: var(--radio); background: var(--arena); font-size: 1.1rem; font-weight: 700; }
+@media (min-width: 760px) { .platos__grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- 3. Eventos ---------- */
+.eventos { background: var(--mar); color: #fff; }
+.eventos .antetitulo { background: var(--sol); color: var(--cafe); }
+.eventos__grid { display: grid; gap: 30px; }
+.eventos__texto { display: grid; gap: 18px; justify-items: start; }
+.eventos__texto > p { font-size: 1.15rem; max-width: 36ch; }
+.lista-eventos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 460px; }
+.lista-eventos li { padding: .7em .8em; border-radius: 16px; background: rgba(255, 255, 255, .14); font-weight: 800; }
+.eventos .foto { background-color: var(--mar-claro); }
+@media (min-width: 900px) { .eventos__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; } }
+
+/* ---------- 4. Ubicación ---------- */
+.ubicacion { background: var(--arena); }
+.ubicacion__grid { display: grid; gap: 26px; }
+.datos { display: grid; gap: 16px; margin-top: 24px; }
+.dato { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: 18px; background: #fff; }
+.dato .icono { width: 30px; height: 30px; color: var(--coral); margin-top: 2px; }
+.dato dt { font-weight: 800; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--cafe-2); }
+.dato dd { margin: 0; font-size: 1.15rem; font-weight: 800; }
+.dato a { text-decoration: none; }
+.siempre-abierto { display: inline-block; margin-top: 4px; padding: .15em .7em; border-radius: 999px; background: var(--wa); color: var(--wa-tinta); font-size: .85rem; }
+.ubicacion__botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.ubicacion__botones .boton { flex: 1 1 200px; }
+.mapa { overflow: hidden; min-height: 320px; border-radius: var(--radio); border: 3px solid var(--cafe); background: var(--mar-claro); box-shadow: var(--sombra); }
+.mapa iframe { width: 100%; height: 100%; min-height: 320px; border: 0; }
+@media (min-width: 900px) { .ubicacion__grid { grid-template-columns: .9fr 1.1fr; align-items: stretch; gap: 40px; } .mapa { min-height: 460px; } }
+
+/* ---------- 5. Opiniones ---------- */
+.opiniones__cabeza { display: grid; gap: 18px; }
+.nota-google { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: var(--radio); background: #fff; box-shadow: var(--sombra); justify-self: start; }
+.nota-google__numero { font-family: var(--f-titulo); font-size: 3.4rem; font-weight: 800; line-height: 1; color: var(--rojo); }
+.nota-google .estrellas { font-size: 1.5rem; }
+.nota-google p { font-weight: 700; }
+.aviso-ejemplo { margin-top: 24px; font-weight: 700; }
+.opiniones__grid { display: grid; gap: 18px; margin-top: 20px; }
+.opinion { position: relative; margin: 0; padding: 26px 22px 22px; border-radius: var(--radio); background: #fff; border: 3px dashed rgba(58, 31, 16, .25); }
+.opinion::before { content: "“"; position: absolute; top: -6px; right: 18px; font-family: var(--f-titulo); font-size: 5rem; line-height: 1; color: var(--mango); }
+.opinion__ejemplo { display: inline-block; margin-bottom: 10px; padding: .15em .7em; border-radius: 999px; background: #FFF3A6; border: 2px dashed #D69A00; color: #5C3300; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.opinion blockquote { margin: 0; font-size: 1.2rem; font-weight: 700; line-height: 1.45; }
+.opinion figcaption { margin-top: 12px; }
+.enlace { display: inline-block; margin-top: 26px; font-weight: 800; color: var(--rojo); }
+@media (min-width: 760px) { .opiniones__grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- 6. Contacto y pie de página ---------- */
+.pie { background: var(--cafe); color: var(--crema); padding: 64px 0 calc(110px + env(safe-area-inset-bottom)); }
+.pie :focus-visible { outline-color: var(--sol); }
+.pie__grid { display: grid; gap: 34px; }
+.pie h2 { font-size: clamp(2.2rem, 9vw, 3.2rem); font-weight: 800; color: var(--sol); }
+.pie h3 { margin-bottom: 12px; font-size: 1.3rem; font-weight: 800; color: var(--sol); }
+.pie__marca { display: grid; gap: 14px; justify-items: start; }
+.pie__marca .logo-espacio { background: rgba(255, 246, 230, .1); border-color: var(--crema); color: var(--crema); }
+.pie__lista { display: grid; gap: 10px; font-size: 1.05rem; }
+.pie__lista a { font-weight: 800; }
+.pie__lista .boton { margin-bottom: 6px; }
+.pie__base { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255, 246, 230, .2); font-size: .9rem; opacity: .9; }
+@media (min-width: 900px) {
+  .pie { padding-bottom: 48px; }
+  .pie__grid { grid-template-columns: 1.2fr 1fr 1fr; }
+}
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.wa-flotante {
+  position: fixed; z-index: 60;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, calc(env(safe-area-inset-bottom) + 10px));
+  display: grid; place-items: center;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--wa); color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 26px -10px rgba(5, 59, 27, .7);
+  animation: latido 2.8s ease-in-out infinite;
+  transition: opacity .3s, visibility .3s;
+}
+.wa-flotante.oculto { opacity: 0; visibility: hidden; }
+.wa-flotante .icono { width: 34px; height: 34px; }
+@keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Íconos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 3.5h2.8l1.4 4.2-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4.2 1.4v2.8A2.1 2.1 0 0 1 18.3 20 15.8 15.8 0 0 1 4 5.7a2.1 2.1 0 0 1 2.6-2.2Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- Cabecera -->
+<header class="cabecera">
+  <div class="contenedor cabecera__fila">
+    <a class="marca" href="#inicio" aria-label="El Patio de la 21, ir al inicio">
+      <!-- LOGO: cambia este texto por <img src="fotos/logo.png" alt="Logo de El Patio de la 21"> -->
+      <span class="logo-espacio logo-espacio--mini" aria-hidden="true">LOGO</span>
+      <span class="marca__nombre">El Patio de la 21</span>
+    </a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#platos">Platos</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="boton boton--wa boton--chico" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  </div>
+</header>
+
+<nav class="atajos" aria-label="Secciones">
+  <ul>
+    <li><a href="#platos">Platos estrella</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- 1. PORTADA -->
+  <section class="portada" id="inicio">
+    <div class="banderines" aria-hidden="true"></div>
+    <div class="contenedor portada__grid">
+      <div class="portada__texto">
+        <!-- LOGO: cambia este espacio por <img src="fotos/logo.png" alt="Logo de El Patio de la 21"> -->
+        <div class="logo-espacio" role="img" aria-label="Espacio para el logo">TU LOGO<br>AQUÍ<br><span class="pendiente">[PENDIENTE]</span></div>
+        <p class="portada__antetitulo">Restaurante familiar · Barranquilla</p>
+        <h1>El Patio <span>de la 21</span></h1>
+        <p class="sello-24"><svg class="icono" aria-hidden="true"><use href="#i-reloj"/></svg>Abierto las 24 horas</p>
+        <p class="portada__lead">Carnes a la parrilla, comida rápida y postres, con buena música, atención amable y porciones generosas.</p>
+        <a class="boton boton--wa boton--grande" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
+        <a class="calificacion" href="https://www.google.com/maps/search/?api=1&amp;query=El%20Patio%20de%20la%2021%20Barranquilla" target="_blank" rel="noopener">
+          <span class="estrellas" style="--nota: 88%" aria-hidden="true">★★★★★</span>
+          <span>4.4 en Google</span>
+          <small>· más de 600 reseñas</small>
+        </a>
+        <ul class="chips" aria-label="Lo que nos distingue">
+          <li>🍹 Aperitivo de bienvenida</li>
+          <li>🍽️ Porciones generosas</li>
+          <li>🎶 Buena música</li>
+          <li>😊 Atención amable</li>
+        </ul>
+      </div>
+      <!-- FOTO: cambia el contenido por <img src="fotos/local.jpg" alt="El Patio de la 21 por dentro"> -->
+      <div class="foto foto--portada" role="img" aria-label="Espacio para una foto del local">
+        <span class="foto__icono" aria-hidden="true">📷</span>
+        <span class="foto__texto">Foto del local<br>(fachada o ambiente)</span>
+        <span class="pendiente">[PENDIENTE]</span>
+      </div>
+    </div>
+  </section>
+  <svg class="ola" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path fill="#FFF6E6" d="M0 48h1440V20c-120 18-240 28-360 18S840 0 720 6 480 40 360 40 120 14 0 22Z"/></svg>
+
+  <!-- 2. PLATOS ESTRELLA -->
+  <section class="seccion platos" id="platos" aria-labelledby="platos-titulo">
+    <div class="contenedor">
+      <p class="antetitulo">Platos estrella</p>
+      <h2 id="platos-titulo">Los favoritos de la casa</h2>
+      <p class="intro">Una carta variada con carnes a la parrilla, comida rápida y postres. Estos son nuestros platos estrella.</p>
+
+      <div class="platos__grid">
+        <article class="plato">
+          <!-- FOTO: cambia el contenido por <img src="fotos/chivo-asado.jpg" alt="Chivo asado"> -->
+          <div class="foto" role="img" aria-label="Espacio para una foto del chivo asado">
+            <span class="foto__icono" aria-hidden="true">📷</span>
+            <span class="foto__texto">Foto del chivo asado</span>
+            <span class="pendiente">[PENDIENTE]</span>
+          </div>
+          <div class="plato__cuerpo">
+            <span class="etiqueta">★ Plato estrella</span>
+            <h3>Chivo asado</h3>
+            <p><span class="pendiente">[PENDIENTE: descripción corta, acompañantes y precio]</span></p>
+            <a class="boton boton--wa" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20chivo%20asado" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="plato">
+          <!-- FOTO: cambia el contenido por <img src="fotos/cazuela-de-mariscos.jpg" alt="Cazuela de mariscos"> -->
+          <div class="foto" role="img" aria-label="Espacio para una foto de la cazuela de mariscos">
+            <span class="foto__icono" aria-hidden="true">📷</span>
+            <span class="foto__texto">Foto de la cazuela de mariscos</span>
+            <span class="pendiente">[PENDIENTE]</span>
+          </div>
+          <div class="plato__cuerpo">
+            <span class="etiqueta">★ Plato estrella</span>
+            <h3>Cazuela de mariscos</h3>
+            <p><span class="pendiente">[PENDIENTE: descripción corta, acompañantes y precio]</span></p>
+            <a class="boton boton--wa" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20cazuela%20de%20mariscos" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="plato plato--parrilla">
+          <!-- FOTO: cambia el contenido por <img src="fotos/parrilla.jpg" alt="Carnes a la parrilla"> -->
+          <div class="foto" role="img" aria-label="Espacio para una foto de la parrilla">
+            <span class="foto__icono" aria-hidden="true">📷</span>
+            <span class="foto__texto">Foto de la parrilla</span>
+            <span class="pendiente">[PENDIENTE]</span>
+          </div>
+          <div class="plato__cuerpo">
+            <span class="etiqueta">🔥 A la parrilla</span>
+            <h3>Parrilla</h3>
+            <p>Carnes a la parrilla. <span class="pendiente">[PENDIENTE: cortes disponibles y precios]</span></p>
+            <a class="boton boton--wa" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20parrilla" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="carta-nota">
+        <p>🍔 🍰 También tenemos comida rápida y postres.</p>
+        <p><span class="pendiente">[PENDIENTE: carta completa con precios, o un enlace a ella]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. EVENTOS Y SHOWS EN VIVO -->
+  <section class="seccion eventos" id="eventos" aria-labelledby="eventos-titulo">
+    <div class="contenedor eventos__grid">
+      <div class="eventos__texto">
+        <p class="antetitulo">Eventos y shows en vivo</p>
+        <h2 id="eventos-titulo">Celebra tu fecha especial en El Patio</h2>
+        <p>Cumpleaños y celebraciones con shows en vivo de música y comedia.</p>
+        <ul class="lista-eventos">
+          <li>🎂 Cumpleaños</li>
+          <li>🎉 Celebraciones</li>
+          <li>🎤 Música en vivo</li>
+          <li>😂 Comedia en vivo</li>
+        </ul>
+        <p><span class="pendiente">[PENDIENTE: capacidad, paquetes, días y horarios de los shows]</span></p>
+        <a class="boton boton--sol boton--grande" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20cotizar%20un%20evento%20en%20El%20Patio%20de%20la%2021" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Cotizar mi evento</a>
+      </div>
+      <!-- FOTO: cambia el contenido por <img src="fotos/evento.jpg" alt="Celebración con show en vivo en El Patio de la 21"> -->
+      <div class="foto" role="img" aria-label="Espacio para una foto de un evento o show en vivo">
+        <span class="foto__icono" aria-hidden="true">📷</span>
+        <span class="foto__texto">Foto de un cumpleaños<br>o show en vivo</span>
+        <span class="pendiente">[PENDIENTE]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. UBICACIÓN -->
+  <section class="seccion ubicacion" id="ubicacion" aria-labelledby="ubicacion-titulo">
+    <div class="contenedor ubicacion__grid">
+      <div>
+        <p class="antetitulo">Ubicación</p>
+        <h2 id="ubicacion-titulo">Ven a visitarnos</h2>
+        <dl class="datos">
+          <div class="dato">
+            <svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>
+            <div><dt>Dirección</dt><dd>Cra. 21 #39-6, barrio Sur Orient, Barranquilla</dd></div>
+          </div>
+          <div class="dato">
+            <svg class="icono" aria-hidden="true"><use href="#i-reloj"/></svg>
+            <div><dt>Horario</dt><dd>Abierto las 24 horas, todos los días<br><span class="siempre-abierto">Siempre abierto</span></dd></div>
+          </div>
+          <div class="dato">
+            <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+            <div><dt>Teléfono y WhatsApp</dt><dd><a href="tel:+573006821618">+57 300 682 1618</a></dd></div>
+          </div>
+        </dl>
+        <div class="ubicacion__botones">
+          <a class="boton boton--sol" href="https://www.google.com/maps/dir/?api=1&amp;destination=Cra.%2021%20%2339-6%2C%20Barranquilla%2C%20Atl%C3%A1ntico%2C%20Colombia" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+          <a class="boton boton--borde" href="tel:+573006821618"><svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+        </div>
+      </div>
+      <!-- MAPA: para mostrar el pin exacto del negocio, en Google Maps busca "El Patio de la 21",
+           toca Compartir → Insertar un mapa, copia el enlace y pégalo en el src de abajo. -->
+      <div class="mapa">
+        <iframe src="https://maps.google.com/maps?q=Cra.%2021%20%2339-6%2C%20Barranquilla%2C%20Atl%C3%A1ntico%2C%20Colombia&amp;z=16&amp;output=embed" title="Mapa de la ubicación de El Patio de la 21" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. LO QUE DICEN LOS CLIENTES -->
+  <section class="seccion opiniones" id="opiniones" aria-labelledby="opiniones-titulo">
+    <div class="contenedor">
+      <div class="opiniones__cabeza">
+        <div>
+          <p class="antetitulo">Lo que dicen los clientes</p>
+          <h2 id="opiniones-titulo">Nos califican con 4.4 en Google</h2>
+        </div>
+        <div class="nota-google">
+          <span class="nota-google__numero">4.4</span>
+          <div>
+            <span class="estrellas" style="--nota: 88%" aria-label="4.4 de 5 estrellas">★★★★★</span>
+            <p>Más de 600 reseñas en Google</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="aviso-ejemplo"><span class="pendiente">[PENDIENTE: estas 3 opiniones son de EJEMPLO. Reemplázalas por reseñas reales de Google, con permiso]</span></p>
+      <div class="opiniones__grid">
+        <figure class="opinion">
+          <span class="opinion__ejemplo">Ejemplo</span>
+          <blockquote>La atención es muy amable y las porciones son generosas.</blockquote>
+          <figcaption><span class="pendiente">[PENDIENTE: nombre del cliente]</span></figcaption>
+        </figure>
+        <figure class="opinion">
+          <span class="opinion__ejemplo">Ejemplo</span>
+          <blockquote>Un buen sitio para celebrar en familia, con muy buena música.</blockquote>
+          <figcaption><span class="pendiente">[PENDIENTE: nombre del cliente]</span></figcaption>
+        </figure>
+        <figure class="opinion">
+          <span class="opinion__ejemplo">Ejemplo</span>
+          <blockquote>Abierto a cualquier hora y siempre te reciben bien.</blockquote>
+          <figcaption><span class="pendiente">[PENDIENTE: nombre del cliente]</span></figcaption>
+        </figure>
+      </div>
+      <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=El%20Patio%20de%20la%2021%20Barranquilla" target="_blank" rel="noopener">Ver todas las reseñas en Google →</a>
+    </div>
+  </section>
+</main>
+
+<!-- 6. CONTACTO Y PIE DE PÁGINA -->
+<footer class="pie" id="contacto">
+  <div class="contenedor">
+    <div class="pie__grid">
+      <div class="pie__marca">
+        <!-- LOGO: cambia este espacio por <img src="fotos/logo.png" alt="Logo de El Patio de la 21"> -->
+        <div class="logo-espacio" role="img" aria-label="Espacio para el logo">TU LOGO<br>AQUÍ</div>
+        <h2>El Patio de la 21</h2>
+        <p>Restaurante familiar en Barranquilla.<br>Abierto las 24 horas, todos los días.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul class="pie__lista">
+          <li><a class="boton boton--wa" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener"><svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a></li>
+          <li>Teléfono: <a href="tel:+573006821618">+57 300 682 1618</a></li>
+          <li>Cra. 21 #39-6, barrio Sur Orient, Barranquilla</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes sociales</h3>
+        <ul class="pie__lista">
+          <li>Instagram: <span class="pendiente">[PENDIENTE]</span></li>
+          <li>Facebook: <span class="pendiente">[PENDIENTE]</span></li>
+          <li>TikTok: <span class="pendiente">[PENDIENTE]</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie__base">© 2026 El Patio de la 21 · Página hecha por <span class="pendiente">[PENDIENTE: tu nombre o marca]</span></p>
+  </div>
+</footer>
+
+<a class="wa-flotante" href="https://wa.me/573006821618?text=Hola%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a El Patio de la 21">
+  <svg class="icono" aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<script>
+  // El botón flotante se esconde mientras el botón grande de la portada está a la vista
+  (function () {
+    var flotante = document.querySelector('.wa-flotante');
+    var principal = document.querySelector('.portada .boton--wa');
+    if (!flotante || !principal || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entradas) {
+      flotante.classList.toggle('oculto', entradas[0].isIntersecting);
+    }).observe(principal);
+  })();
+</script>
+</body>
+</html>
